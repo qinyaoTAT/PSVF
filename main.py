@@ -16,6 +16,9 @@ VERSION = '1.0.0'
 class PSVF:
     def __init__(self, path):
         self.path = path
+        file_list, module_set = self.get_file_list()
+        self.file_list = file_list
+        self.module_set = module_set
 
     def arg_parser(self):
         arg = ArgumentParser(description="PSVF")
@@ -56,19 +59,24 @@ class PSVF:
         dot.node('c', 'c')
         dot.edges(['ab', 'ac'])
         dot.edge('b', 'c', constrait='false')
-        dot.format = 'png'
+        dot.format = 'pdf'
         print(dot.source)
         dot.render(directory='output').replace('\\', '/')
 
-        file_list, module_set = self.get_file_list()
-        for file in file_list:
-            f = open(file, 'r')
+        for file in self.file_list:
+            all_instruction = []
+            try:
+                f = open(file, 'r')
+            except Exception as e:
+                logging.error('error.')
+                continue
             # dis.dis(f.read())
             code_obj = dis.get_instructions(f.read())
-            for i in code_obj:
-                if 'STORE_' in i.opname:
+            for inst in code_obj:
+                all_instruction.append(inst)
+                if 'STORE_' in inst.opname:
                     pass
-
+            print()
 
 if __name__ == '__main__':
     psvf = PSVF(source_path)
