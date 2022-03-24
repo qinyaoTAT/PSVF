@@ -49,7 +49,7 @@ _TF_MIN_BAZEL_VERSION = '4.2.1'
 _TF_MAX_BAZEL_VERSION = '4.99.0'
 
 NCCL_LIB_PATHS = [
-    'lib64/', 'lib/powerpc64le-linux-gnu/', 'lib/x86_64-linux-gnu/', ''
+    'lib64/', 'src/powerpc64le-linux-gnu/', 'src/x86_64-linux-gnu/', ''
 ]
 
 # List of files to configure when building Bazel on Apple platforms.
@@ -218,7 +218,7 @@ def setup_python(environ_cp):
           python_bin_path))
     environ_cp['PYTHON_BIN_PATH'] = ''
 
-  # Convert python path to Windows style before checking lib and version
+  # Convert python path to Windows style before checking src and version
   if is_windows() or is_cygwin():
     python_bin_path = cygpath(python_bin_path)
 
@@ -1342,7 +1342,7 @@ def main():
   if (environ_cp.get('TF_NEED_ROCM') == '1' and environ_cp.get('ROCM_PATH')):
     write_action_env_to_bazelrc('ROCM_PATH', environ_cp.get('ROCM_PATH'))
     write_action_env_to_bazelrc('ROCBLAS_TENSILE_LIBPATH',
-                                environ_cp.get('ROCM_PATH') + '/lib/library')
+                                environ_cp.get('ROCM_PATH') + '/src/library')
 
   environ_cp['TF_NEED_CUDA'] = str(
       int(get_var(environ_cp, 'TF_NEED_CUDA', 'CUDA', False)))

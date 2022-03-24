@@ -2,11 +2,14 @@ import dis
 import os
 import sys
 import re
-import symtable
+import codecs
 import logging
 import graphviz
 
-from argparse import ArgumentParser
+
+
+from src import process
+from src import pre_process
 
 logging.basicConfig(format="%(asctime)s|%(levelname)s|%(filename)s:%(lineno)s|%(message)s", level=logging.INFO)
 source_path = 'D:\deeplearninglib_top10\\tensorflow-master'
@@ -16,36 +19,38 @@ VERSION = '1.0.0'
 class PSVF:
     def __init__(self, path):
         self.path = path
-        file_list, module_set = self.get_file_list()
+        file_list, module_set = pre_process.get_file_list(self.path)
         self.file_list = file_list
         self.module_set = module_set
+        self.process = process.Process()
 
-    def arg_parser(self):
-        arg = ArgumentParser(description="PSVF")
-        arg.add_argument("-o", '--output', dest='output', help="specify the output directory.", default='.')
-        arg.add_argument("-v", '--version', help="show version.")
-        return arg.parse_args()
+    def get_top_insts(self, file):
+        top_level_insts = []
+        with codecs.open(file, 'r', encoding='UTF-8', errors='strict') as fp:
+            src_code = fp.read()
+            code_obj = dis.Bytecode(src_code)
+            # dis.dis(f.read())
+            for inst in code_obj:
+                top_level_insts.append(inst)
+            co_consts = code_obj.codeobj.co_consts
+        self.process.process_insts(top_level_insts)
+        self.get_sub_body_insts(co_consts, type(code_obj.codeobj))
 
-    def get_file_list(self):
-        file_list = []
-        module_set = set()
-        for root, dirs, files in os.walk(self.path, topdown=True):
-            for name in files:
-                if name.endswith('.py'):
-                    abs_path = os.path.join(root, name)
-                    file_list.append(abs_path)
-                    module_name = abs_path.replace(source_path, '')
-                    module_name = module_name.replace('.py', '')
-                    module_name = module_name.replace(os.sep, '.')
-                    if module_name.startswith('.'):
-                        module_name = module_name[1:]
-                    if module_name.endswith('.__init__'):
-                        module_name = module_name.replace('.__init__', '')
-                    module_set.add(module_name)
-        return file_list, module_set
+    def get_sub_body_insts(self, co_consts, codeobj_type):
+        for sub_codeobj in co_consts:
+            if isinstance(sub_codeobj, codeobj_type):
+                body_insts = []
+                body_co_consts = sub_codeobj.co_consts
+                sub_body_insts = dis.get_instructions(sub_codeobj)
+                for inst in sub_body_insts:
+                    body_insts.append(inst)
+
+                self.process.process_insts(body_insts)
+                if body_co_consts:
+                    self.get_sub_body_insts(body_co_consts, codeobj_type)
 
     def run(self):
-        args = self.arg_parser()
+        args = pre_process.arg_parser()
         output = args.output
         if not os.path.exists(output):
             logging.error('please specify the correct output directory!!!')
@@ -53,30 +58,11 @@ class PSVF:
         if os.path.isdir(output):
             output = os.path.join(output, 'out.png')
 
-        dot = graphviz.Digraph('PSVF', comment='the psvf')
-        dot.node('a', 'a')
-        dot.node('b', 'b')
-        dot.node('c', 'c')
-        dot.edges(['ab', 'ac'])
-        dot.edge('b', 'c', constrait='false')
-        dot.format = 'pdf'
-        print(dot.source)
-        dot.render(directory='output').replace('\\', '/')
-
         for file in self.file_list:
-            all_instruction = []
-            try:
-                f = open(file, 'r')
-            except Exception as e:
-                logging.error('error.')
-                continue
-            # dis.dis(f.read())
-            code_obj = dis.get_instructions(f.read())
-            for inst in code_obj:
-                all_instruction.append(inst)
-                if 'STORE_' in inst.opname:
-                    pass
-            print()
+            module_name = file.replace(self.path, '')[1:-3]
+            module_name = module_name.replace(os.sep, '.')
+            self.get_top_insts(file)
+
 
 if __name__ == '__main__':
     psvf = PSVF(source_path)
