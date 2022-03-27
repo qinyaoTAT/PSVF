@@ -5,6 +5,7 @@ import re
 import codecs
 import logging
 import graphviz
+import platform
 
 
 
@@ -12,7 +13,10 @@ from src import process
 from src import pre_process
 
 logging.basicConfig(format="%(asctime)s|%(levelname)s|%(filename)s:%(lineno)s|%(message)s", level=logging.INFO)
-source_path = 'D:\deeplearninglib_top10\\tensorflow-master'
+if platform.system() == 'Darwin':
+    source_path = '/Users/qinyao/tools/python/tensorflow-master'
+elif platform.system() == 'Windows':
+    source_path = ''
 VERSION = '1.0.0'
 
 
@@ -28,8 +32,8 @@ class PSVF:
         top_level_insts = []
         with codecs.open(file, 'r', encoding='UTF-8', errors='strict') as fp:
             src_code = fp.read()
+            dis.dis(src_code)
             code_obj = dis.Bytecode(src_code)
-            # dis.dis(f.read())
             for inst in code_obj:
                 top_level_insts.append(inst)
             co_consts = code_obj.codeobj.co_consts
@@ -62,6 +66,8 @@ class PSVF:
             module_name = file.replace(self.path, '')[1:-3]
             module_name = module_name.replace(os.sep, '.')
             self.get_top_insts(file)
+
+            break
 
 
 if __name__ == '__main__':
