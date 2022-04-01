@@ -47,9 +47,11 @@ _TF_BAZELRC = ''
 _TF_CURRENT_BAZEL_VERSION = None
 _TF_MIN_BAZEL_VERSION = '4.2.1'
 _TF_MAX_BAZEL_VERSION = '4.99.0'
+_TF_MAX_BAZEL_VERSION_1 = _TF_MAX_BAZEL_VERSION
+
 
 NCCL_LIB_PATHS = [
-    'lib64/', 'src/powerpc64le-linux-gnu/', 'src/x86_64-linux-gnu/', ''
+    'lib64/', 'src/powerpc64le-linux-gnu/', 'src/x86_64-linux-gnu/', _TF_MAX_BAZEL_VERSION_1
 ]
 
 # List of files to configure when building Bazel on Apple platforms.
@@ -147,7 +149,7 @@ def run_shell(cmd, allow_non_zero=False, stderr=None):
     stderr = sys.stdout
   if allow_non_zero:
     try:
-      output = subprocess.check_output(cmd, stderr=stderr)
+      output = subprocess.check_output(cmd, stderr=stderr, shell=True)
     except subprocess.CalledProcessError as e:
       output = e.output
   else:

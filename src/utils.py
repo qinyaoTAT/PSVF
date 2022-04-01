@@ -1,8 +1,11 @@
-
+# -*- coding:utf-8 -*-
 
 class Utils:
     def __init__(self):
         self.insts_stack = []
+        self.current_func_name = ''
+        self.last_call_name = ''
+        self.current_build_set = set()
 
     def push(self, inst):
         self.insts_stack.append(inst)

@@ -1,4 +1,5 @@
 # -*- coding:utf-8 -*-
+import graphviz
 
 class Digraph:
     def __init__(self):
@@ -17,11 +18,16 @@ class Digraph:
             self.graph.pop(value)
 
     def add_edge(self, vertex_out, vertex_in):
-        if not vertex_out:
+        if not vertex_out or not vertex_in:
             return
         if vertex_in not in self.graph:
             self.graph[vertex_in] = []
+        if vertex_out not in self.graph:
+            self.graph[vertex_out] = []
         self.graph[vertex_in].append(vertex_out)
 
-    def add_vertex_edge(self, *args, **kwargs):
+    def add_mul_vertex_edge(self, *args, **kwargs):
+        pass
+
+    def write(self):
         pass
