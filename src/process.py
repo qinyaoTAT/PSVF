@@ -22,7 +22,7 @@ class Process:
                 if inst.starts_line:
                     self.utils.current_lineno = inst.starts_line
                     self.digraph.lineno = inst.starts_line
-                    if inst.starts_line == 71:
+                    if inst.starts_line == 406:
                         print()
                 self.utils.push(inst)
 
@@ -107,7 +107,7 @@ class Process:
         for i in range(2):
             value_rhs = self.process_rhs()
             if isinstance(value_rhs, set):
-                elem_set += value_rhs
+                elem_set |= value_rhs
             elif value_rhs:
                 elem_set.add(value_rhs)
         self.utils.current_operand_set = elem_set
@@ -122,7 +122,7 @@ class Process:
         for i in range(elem_count):
             value_rhs = self.process_rhs()
             if isinstance(value_rhs, set):
-                elem_set += value_rhs
+                elem_set |= value_rhs
             elif value_rhs:
                 elem_set.add(value_rhs)
         self.utils.current_build_set = elem_set
@@ -191,7 +191,11 @@ class Process:
 
             # arg to func
             for index, inst in enumerate(args_list):
-                if 'LOAD_FAST' == inst.opname or 'LOAD_NAME' == inst.opname:
+                if isinstance(inst, set):
+                    vertex_in = func_name + '#' + str(index)
+                    for i in inst:
+                        self.digraph.add_edge(i, vertex_in)
+                elif 'LOAD_FAST' == inst.opname or 'LOAD_NAME' == inst.opname:
                     vertex_in = func_name + '#' + str(index)
                     vertex_out = inst.argval
                     self.digraph.add_edge(vertex_out, vertex_in)
@@ -248,6 +252,8 @@ class Process:
                 args_list.append(inst)
             elif 'BUILD_' in inst.opname:
                 args_list.append(inst)
+            elif 'BINARY_MODULO' in inst.opname:
+                args_list.append(self.utils.current_operand_set)
             elif 'BINARY_SUBSCR' in inst.opname:
                 inst = self.utils.pop()
                 inst = self.utils.pop()
@@ -279,10 +285,8 @@ class Process:
             value_rhs = inst_rhs.argval
         elif inst_rhs.opname == 'IMPORT_NAME' or inst_rhs.opname == 'IMPORT_FROM':
             pass
-        elif inst_rhs.opname == 'BUILD_LIST':
+        elif 'BUILD_' in inst_rhs.opname:
             return self.utils.current_build_set
-        elif inst_rhs.opname == 'BUILD_DICT':
-            pass
         elif 'CALL_FUNCTION' in inst_rhs.opname:
             value_rhs = self.utils.last_call_name + '#-1'
         elif inst_rhs.opname == 'MAKE_FUNCTION':
