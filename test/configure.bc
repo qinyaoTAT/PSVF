@@ -112,122 +112,122 @@
   65         222 BUILD_LIST               2
              224 STORE_NAME              29 (IOS_FILES)
   71         226 LOAD_BUILD_CLASS
-             228 LOAD_CONST              34 (<code object UserInputError at 0x00000280E16455B0, file "<dis>", line 71>)
+             228 LOAD_CONST              34 (<code object UserInputError at 0x000001857DB807C0, file "<dis>", line 71>)
              230 LOAD_CONST              35 ('UserInputError')
              232 MAKE_FUNCTION            0
              234 LOAD_CONST              35 ('UserInputError')
              236 LOAD_NAME               30 (Exception)
              238 CALL_FUNCTION            3
              240 STORE_NAME              31 (UserInputError)
-  75         242 LOAD_CONST              36 (<code object is_windows at 0x00000280E1645660, file "<dis>", line 75>)
+  75         242 LOAD_CONST              36 (<code object is_windows at 0x000001857DB80870, file "<dis>", line 75>)
              244 LOAD_CONST              37 ('is_windows')
              246 MAKE_FUNCTION            0
              248 STORE_NAME              32 (is_windows)
-  79         250 LOAD_CONST              38 (<code object is_linux at 0x00000280E1645710, file "<dis>", line 79>)
+  79         250 LOAD_CONST              38 (<code object is_linux at 0x000001857DB80920, file "<dis>", line 79>)
              252 LOAD_CONST              39 ('is_linux')
              254 MAKE_FUNCTION            0
              256 STORE_NAME              33 (is_linux)
-  83         258 LOAD_CONST              40 (<code object is_macos at 0x00000280E16457C0, file "<dis>", line 83>)
+  83         258 LOAD_CONST              40 (<code object is_macos at 0x000001857DB809D0, file "<dis>", line 83>)
              260 LOAD_CONST              41 ('is_macos')
              262 MAKE_FUNCTION            0
              264 STORE_NAME              34 (is_macos)
-  87         266 LOAD_CONST              42 (<code object is_ppc64le at 0x00000280E1645870, file "<dis>", line 87>)
+  87         266 LOAD_CONST              42 (<code object is_ppc64le at 0x000001857DB80A80, file "<dis>", line 87>)
              268 LOAD_CONST              43 ('is_ppc64le')
              270 MAKE_FUNCTION            0
              272 STORE_NAME              35 (is_ppc64le)
-  91         274 LOAD_CONST              44 (<code object is_cygwin at 0x00000280E1645920, file "<dis>", line 91>)
+  91         274 LOAD_CONST              44 (<code object is_cygwin at 0x000001857DB80B30, file "<dis>", line 91>)
              276 LOAD_CONST              45 ('is_cygwin')
              278 MAKE_FUNCTION            0
              280 STORE_NAME              36 (is_cygwin)
-  95         282 LOAD_CONST              46 (<code object get_input at 0x00000280E16459D0, file "<dis>", line 95>)
+  95         282 LOAD_CONST              46 (<code object get_input at 0x000001857DB80BE0, file "<dis>", line 95>)
              284 LOAD_CONST              47 ('get_input')
              286 MAKE_FUNCTION            0
              288 STORE_NAME              37 (get_input)
- 106         290 LOAD_CONST              48 (<code object symlink_force at 0x00000280E1645A80, file "<dis>", line 106>)
+ 106         290 LOAD_CONST              48 (<code object symlink_force at 0x000001857DB80C90, file "<dis>", line 106>)
              292 LOAD_CONST              49 ('symlink_force')
              294 MAKE_FUNCTION            0
              296 STORE_NAME              38 (symlink_force)
- 123         298 LOAD_CONST              50 (<code object sed_in_place at 0x00000280E1645B30, file "<dis>", line 123>)
+ 123         298 LOAD_CONST              50 (<code object sed_in_place at 0x000001857DB80D40, file "<dis>", line 123>)
              300 LOAD_CONST              51 ('sed_in_place')
              302 MAKE_FUNCTION            0
              304 STORE_NAME              39 (sed_in_place)
- 138         306 LOAD_CONST              52 (<code object write_to_bazelrc at 0x00000280E1645BE0, file "<dis>", line 138>)
+ 138         306 LOAD_CONST              52 (<code object write_to_bazelrc at 0x000001857DB80DF0, file "<dis>", line 138>)
              308 LOAD_CONST              53 ('write_to_bazelrc')
              310 MAKE_FUNCTION            0
              312 STORE_NAME              40 (write_to_bazelrc)
- 143         314 LOAD_CONST              54 (<code object write_action_env_to_bazelrc at 0x00000280E1645C90, file "<dis>", line 143>)
+ 143         314 LOAD_CONST              54 (<code object write_action_env_to_bazelrc at 0x000001857DB80EA0, file "<dis>", line 143>)
              316 LOAD_CONST              55 ('write_action_env_to_bazelrc')
              318 MAKE_FUNCTION            0
              320 STORE_NAME              41 (write_action_env_to_bazelrc)
  147         322 LOAD_CONST             140 ((False, None))
-             324 LOAD_CONST              57 (<code object run_shell at 0x00000280E1645DF0, file "<dis>", line 147>)
+             324 LOAD_CONST              57 (<code object run_shell at 0x000001857DB8E030, file "<dis>", line 147>)
              326 LOAD_CONST              58 ('run_shell')
              328 MAKE_FUNCTION            1 (defaults)
              330 STORE_NAME              42 (run_shell)
- 160         332 LOAD_CONST              59 (<code object cygpath at 0x00000280E1645D40, file "<dis>", line 160>)
+ 160         332 LOAD_CONST              59 (<code object cygpath at 0x000001857DB80F50, file "<dis>", line 160>)
              334 LOAD_CONST              60 ('cygpath')
              336 MAKE_FUNCTION            0
              338 STORE_NAME              43 (cygpath)
- 165         340 LOAD_CONST              61 (<code object get_python_path at 0x00000280E1645EA0, file "<dis>", line 165>)
+ 165         340 LOAD_CONST              61 (<code object get_python_path at 0x000001857DB8E0E0, file "<dis>", line 165>)
              342 LOAD_CONST              62 ('get_python_path')
              344 MAKE_FUNCTION            0
              346 STORE_NAME              44 (get_python_path)
- 197         348 LOAD_CONST              63 (<code object get_python_major_version at 0x00000280E1645F50, file "<dis>", line 197>)
+ 197         348 LOAD_CONST              63 (<code object get_python_major_version at 0x000001857D8ACC90, file "<dis>", line 197>)
              350 LOAD_CONST              64 ('get_python_major_version')
              352 MAKE_FUNCTION            0
              354 STORE_NAME              45 (get_python_major_version)
- 202         356 LOAD_CONST              65 (<code object setup_python at 0x00000280E165D190, file "<dis>", line 202>)
+ 202         356 LOAD_CONST              65 (<code object setup_python at 0x000001857D7FA920, file "<dis>", line 202>)
              358 LOAD_CONST              66 ('setup_python')
              360 MAKE_FUNCTION            0
              362 STORE_NAME              46 (setup_python)
- 272         364 LOAD_CONST              67 (<code object reset_tf_configure_bazelrc at 0x00000280E165D0E0, file "<dis>", line 272>)
+ 272         364 LOAD_CONST              67 (<code object reset_tf_configure_bazelrc at 0x000001857D7F5A80, file "<dis>", line 272>)
              366 LOAD_CONST              68 ('reset_tf_configure_bazelrc')
              368 MAKE_FUNCTION            0
              370 STORE_NAME              47 (reset_tf_configure_bazelrc)
- 277         372 LOAD_CONST              69 (<code object cleanup_makefile at 0x00000280E165D240, file "<dis>", line 277>)
+ 277         372 LOAD_CONST              69 (<code object cleanup_makefile at 0x000001857D7FA7C0, file "<dis>", line 277>)
              374 LOAD_CONST              70 ('cleanup_makefile')
              376 MAKE_FUNCTION            0
              378 STORE_NAME              48 (cleanup_makefile)
  291         380 LOAD_CONST             141 ((None, None, None))
-             382 LOAD_CONST              71 (<code object get_var at 0x00000280E165D450, file "<dis>", line 291>)
+             382 LOAD_CONST              71 (<code object get_var at 0x000001857D7FA5B0, file "<dis>", line 291>)
              384 LOAD_CONST              72 ('get_var')
              386 MAKE_FUNCTION            1 (defaults)
              388 STORE_NAME              49 (get_var)
  376         390 LOAD_CONST             142 ((None,))
-             392 LOAD_CONST              73 (<code object set_build_var at 0x00000280E165D3A0, file "<dis>", line 376>)
+             392 LOAD_CONST              73 (<code object set_build_var at 0x000001857D7FA500, file "<dis>", line 376>)
              394 LOAD_CONST              74 ('set_build_var')
              396 MAKE_FUNCTION            1 (defaults)
              398 STORE_NAME              50 (set_build_var)
  410         400 LOAD_CONST             143 ((None, None, None, None))
-             402 LOAD_CONST              75 (<code object set_action_env_var at 0x00000280E165D500, file "<dis>", line 410>)
+             402 LOAD_CONST              75 (<code object set_action_env_var at 0x000001857D7FA660, file "<dis>", line 410>)
              404 LOAD_CONST              76 ('set_action_env_var')
              406 MAKE_FUNCTION            1 (defaults)
              408 STORE_NAME              51 (set_action_env_var)
- 445         410 LOAD_CONST              77 (<code object convert_version_to_int at 0x00000280E165D7C0, file "<dis>", line 445>)
+ 445         410 LOAD_CONST              77 (<code object convert_version_to_int at 0x000001857D7FA870, file "<dis>", line 445>)
              412 LOAD_CONST              78 ('convert_version_to_int')
              414 MAKE_FUNCTION            0
              416 STORE_NAME              52 (convert_version_to_int)
- 470         418 LOAD_CONST              79 (<code object check_bazel_version at 0x00000280E165D870, file "<dis>", line 470>)
+ 470         418 LOAD_CONST              79 (<code object check_bazel_version at 0x000001857D0839D0, file "<dis>", line 470>)
              420 LOAD_CONST              80 ('check_bazel_version')
              422 MAKE_FUNCTION            0
              424 STORE_NAME              53 (check_bazel_version)
- 518         426 LOAD_CONST              81 (<code object set_cc_opt_flags at 0x00000280E165D920, file "<dis>", line 518>)
+ 518         426 LOAD_CONST              81 (<code object set_cc_opt_flags at 0x000001857D083A80, file "<dis>", line 518>)
              428 LOAD_CONST              82 ('set_cc_opt_flags')
              430 MAKE_FUNCTION            0
              432 STORE_NAME              54 (set_cc_opt_flags)
- 548         434 LOAD_CONST              83 (<code object set_tf_cuda_clang at 0x00000280E165D9D0, file "<dis>", line 548>)
+ 548         434 LOAD_CONST              83 (<code object set_tf_cuda_clang at 0x000001857DB8E190, file "<dis>", line 548>)
              436 LOAD_CONST              84 ('set_tf_cuda_clang')
              438 MAKE_FUNCTION            0
              440 STORE_NAME              55 (set_tf_cuda_clang)
- 568         442 LOAD_CONST              85 (<code object set_tf_download_clang at 0x00000280E165DA80, file "<dis>", line 568>)
+ 568         442 LOAD_CONST              85 (<code object set_tf_download_clang at 0x000001857DB8E240, file "<dis>", line 568>)
              444 LOAD_CONST              86 ('set_tf_download_clang')
              446 MAKE_FUNCTION            0
              448 STORE_NAME              56 (set_tf_download_clang)
- 584         450 LOAD_CONST              87 (<code object get_from_env_or_user_or_default at 0x00000280E165DB30, file "<dis>", line 584>)
+ 584         450 LOAD_CONST              87 (<code object get_from_env_or_user_or_default at 0x000001857DB8E2F0, file "<dis>", line 584>)
              452 LOAD_CONST              88 ('get_from_env_or_user_or_default')
              454 MAKE_FUNCTION            0
              456 STORE_NAME              57 (get_from_env_or_user_or_default)
- 609         458 LOAD_CONST              89 (<code object set_clang_cuda_compiler_path at 0x00000280E165DBE0, file "<dis>", line 609>)
+ 609         458 LOAD_CONST              89 (<code object set_clang_cuda_compiler_path at 0x000001857DB8E3A0, file "<dis>", line 609>)
              460 LOAD_CONST              90 ('set_clang_cuda_compiler_path')
              462 MAKE_FUNCTION            0
              464 STORE_NAME              58 (set_clang_cuda_compiler_path)
@@ -235,99 +235,99 @@
  639         468 LOAD_CONST              56 (False)
  640         470 LOAD_NAME               19 (_DEFAULT_PROMPT_ASK_ATTEMPTS)
  632         472 BUILD_TUPLE              3
-             474 LOAD_CONST              91 (<code object prompt_loop_or_load_from_env at 0x00000280E165DC90, file "<dis>", line 632>)
+             474 LOAD_CONST              91 (<code object prompt_loop_or_load_from_env at 0x000001857DB8E450, file "<dis>", line 632>)
              476 LOAD_CONST              92 ('prompt_loop_or_load_from_env')
              478 MAKE_FUNCTION            1 (defaults)
              480 STORE_NAME              59 (prompt_loop_or_load_from_env)
- 698         482 LOAD_CONST              93 (<code object create_android_ndk_rule at 0x00000280E165DF50, file "<dis>", line 698>)
+ 698         482 LOAD_CONST              93 (<code object create_android_ndk_rule at 0x000001857DB8E660, file "<dis>", line 698>)
              484 LOAD_CONST              94 ('create_android_ndk_rule')
              486 MAKE_FUNCTION            0
              488 STORE_NAME              60 (create_android_ndk_rule)
- 726         490 LOAD_CONST              95 (<code object create_android_sdk_rule at 0x00000280E165C2F0, file "<dis>", line 726>)
+ 726         490 LOAD_CONST              95 (<code object create_android_sdk_rule at 0x000001857DB8E920, file "<dis>", line 726>)
              492 LOAD_CONST              96 ('create_android_sdk_rule')
              494 MAKE_FUNCTION            0
              496 STORE_NAME              61 (create_android_sdk_rule)
- 790         498 LOAD_CONST              97 (<code object get_ndk_api_level at 0x00000280E165C660, file "<dis>", line 790>)
+ 790         498 LOAD_CONST              97 (<code object get_ndk_api_level at 0x000001857DB8EB30, file "<dis>", line 790>)
              500 LOAD_CONST              98 ('get_ndk_api_level')
              502 MAKE_FUNCTION            0
              504 STORE_NAME              62 (get_ndk_api_level)
- 838         506 LOAD_CONST              99 (<code object set_gcc_host_compiler_path at 0x00000280E165C710, file "<dis>", line 838>)
+ 838         506 LOAD_CONST              99 (<code object set_gcc_host_compiler_path at 0x000001857DB8EBE0, file "<dis>", line 838>)
              508 LOAD_CONST             100 ('set_gcc_host_compiler_path')
              510 MAKE_FUNCTION            0
              512 STORE_NAME              63 (set_gcc_host_compiler_path)
- 861         514 LOAD_CONST             101 (<code object reformat_version_sequence at 0x00000280E165C7C0, file "<dis>", line 861>)
+ 861         514 LOAD_CONST             101 (<code object reformat_version_sequence at 0x000001857DB8EC90, file "<dis>", line 861>)
              516 LOAD_CONST             102 ('reformat_version_sequence')
              518 MAKE_FUNCTION            0
              520 STORE_NAME              64 (reformat_version_sequence)
- 884         522 LOAD_CONST             103 (<code object set_tf_cuda_paths at 0x00000280E165C870, file "<dis>", line 884>)
+ 884         522 LOAD_CONST             103 (<code object set_tf_cuda_paths at 0x000001857DB8ED40, file "<dis>", line 884>)
              524 LOAD_CONST             104 ('set_tf_cuda_paths')
              526 MAKE_FUNCTION            0
              528 STORE_NAME              65 (set_tf_cuda_paths)
- 895         530 LOAD_CONST             105 (<code object set_tf_cuda_version at 0x00000280E165C920, file "<dis>", line 895>)
+ 895         530 LOAD_CONST             105 (<code object set_tf_cuda_version at 0x000001857DB8EDF0, file "<dis>", line 895>)
              532 LOAD_CONST             106 ('set_tf_cuda_version')
              534 MAKE_FUNCTION            0
              536 STORE_NAME              66 (set_tf_cuda_version)
- 907         538 LOAD_CONST             107 (<code object set_tf_cudnn_version at 0x00000280E165C9D0, file "<dis>", line 907>)
+ 907         538 LOAD_CONST             107 (<code object set_tf_cudnn_version at 0x000001857DB8EEA0, file "<dis>", line 907>)
              540 LOAD_CONST             108 ('set_tf_cudnn_version')
              542 MAKE_FUNCTION            0
              544 STORE_NAME              67 (set_tf_cudnn_version)
- 919         546 LOAD_CONST             109 (<code object is_cuda_compatible at 0x00000280E165CA80, file "<dis>", line 919>)
+ 919         546 LOAD_CONST             109 (<code object is_cuda_compatible at 0x000001857DB8EF50, file "<dis>", line 919>)
              548 LOAD_CONST             110 ('is_cuda_compatible')
              550 MAKE_FUNCTION            0
              552 STORE_NAME              68 (is_cuda_compatible)
- 948         554 LOAD_CONST             111 (<code object set_tf_tensorrt_version at 0x00000280E165CB30, file "<dis>", line 948>)
+ 948         554 LOAD_CONST             111 (<code object set_tf_tensorrt_version at 0x000001857DB93030, file "<dis>", line 948>)
              556 LOAD_CONST             112 ('set_tf_tensorrt_version')
              558 MAKE_FUNCTION            0
              560 STORE_NAME              69 (set_tf_tensorrt_version)
- 965         562 LOAD_CONST             113 (<code object set_tf_nccl_version at 0x00000280E165CBE0, file "<dis>", line 965>)
+ 965         562 LOAD_CONST             113 (<code object set_tf_nccl_version at 0x000001857DB930E0, file "<dis>", line 965>)
              564 LOAD_CONST             114 ('set_tf_nccl_version')
              566 MAKE_FUNCTION            0
              568 STORE_NAME              70 (set_tf_nccl_version)
- 982         570 LOAD_CONST             115 (<code object get_native_cuda_compute_capabilities at 0x00000280E165CDF0, file "<dis>", line 982>)
+ 982         570 LOAD_CONST             115 (<code object get_native_cuda_compute_capabilities at 0x000001857DB932F0, file "<dis>", line 982>)
              572 LOAD_CONST             116 ('get_native_cuda_compute_capabilities')
              574 MAKE_FUNCTION            0
              576 STORE_NAME              71 (get_native_cuda_compute_capabilities)
-1006         578 LOAD_CONST             117 (<code object set_tf_cuda_compute_capabilities at 0x00000280E165CF50, file "<dis>", line 1006>)
+1006         578 LOAD_CONST             117 (<code object set_tf_cuda_compute_capabilities at 0x000001857DB93450, file "<dis>", line 1006>)
              580 LOAD_CONST             118 ('set_tf_cuda_compute_capabilities')
              582 MAKE_FUNCTION            0
              584 STORE_NAME              72 (set_tf_cuda_compute_capabilities)
-1077         586 LOAD_CONST             119 (<code object set_other_cuda_vars at 0x00000280E1661030, file "<dis>", line 1077>)
+1077         586 LOAD_CONST             119 (<code object set_other_cuda_vars at 0x000001857DB93500, file "<dis>", line 1077>)
              588 LOAD_CONST             120 ('set_other_cuda_vars')
              590 MAKE_FUNCTION            0
              592 STORE_NAME              73 (set_other_cuda_vars)
-1086         594 LOAD_CONST             121 (<code object set_host_cxx_compiler at 0x00000280E16610E0, file "<dis>", line 1086>)
+1086         594 LOAD_CONST             121 (<code object set_host_cxx_compiler at 0x000001857DB935B0, file "<dis>", line 1086>)
              596 LOAD_CONST             122 ('set_host_cxx_compiler')
              598 MAKE_FUNCTION            0
              600 STORE_NAME              74 (set_host_cxx_compiler)
-1103         602 LOAD_CONST             123 (<code object set_host_c_compiler at 0x00000280E1661190, file "<dis>", line 1103>)
+1103         602 LOAD_CONST             123 (<code object set_host_c_compiler at 0x000001857DB93660, file "<dis>", line 1103>)
              604 LOAD_CONST             124 ('set_host_c_compiler')
              606 MAKE_FUNCTION            0
              608 STORE_NAME              75 (set_host_c_compiler)
-1120         610 LOAD_CONST             125 (<code object system_specific_test_config at 0x00000280E1661240, file "<dis>", line 1120>)
+1120         610 LOAD_CONST             125 (<code object system_specific_test_config at 0x000001857DB93710, file "<dis>", line 1120>)
              612 LOAD_CONST             126 ('system_specific_test_config')
              614 MAKE_FUNCTION            0
              616 STORE_NAME              76 (system_specific_test_config)
-1163         618 LOAD_CONST             127 (<code object set_system_libs_flag at 0x00000280E16613A0, file "<dis>", line 1163>)
+1163         618 LOAD_CONST             127 (<code object set_system_libs_flag at 0x000001857DB93870, file "<dis>", line 1163>)
              620 LOAD_CONST             128 ('set_system_libs_flag')
              622 MAKE_FUNCTION            0
              624 STORE_NAME              77 (set_system_libs_flag)
-1177         626 LOAD_CONST             129 (<code object set_windows_build_flags at 0x00000280E16612F0, file "<dis>", line 1177>)
+1177         626 LOAD_CONST             129 (<code object set_windows_build_flags at 0x000001857DB937C0, file "<dis>", line 1177>)
              628 LOAD_CONST             130 ('set_windows_build_flags')
              630 MAKE_FUNCTION            0
              632 STORE_NAME              78 (set_windows_build_flags)
-1201         634 LOAD_CONST             131 (<code object config_info_line at 0x00000280E1661450, file "<dis>", line 1201>)
+1201         634 LOAD_CONST             131 (<code object config_info_line at 0x000001857DB93920, file "<dis>", line 1201>)
              636 LOAD_CONST             132 ('config_info_line')
              638 MAKE_FUNCTION            0
              640 STORE_NAME              79 (config_info_line)
-1206         642 LOAD_CONST             133 (<code object configure_ios at 0x00000280E1661660, file "<dis>", line 1206>)
+1206         642 LOAD_CONST             133 (<code object configure_ios at 0x000001857DB93B30, file "<dis>", line 1206>)
              644 LOAD_CONST             134 ('configure_ios')
              646 MAKE_FUNCTION            0
              648 STORE_NAME              80 (configure_ios)
-1222         650 LOAD_CONST             135 (<code object validate_cuda_config at 0x00000280E16617C0, file "<dis>", line 1222>)
+1222         650 LOAD_CONST             135 (<code object validate_cuda_config at 0x000001857DB93C90, file "<dis>", line 1222>)
              652 LOAD_CONST             136 ('validate_cuda_config')
              654 MAKE_FUNCTION            0
              656 STORE_NAME              81 (validate_cuda_config)
-1285         658 LOAD_CONST             137 (<code object main at 0x00000280E1661870, file "<dis>", line 1285>)
+1285         658 LOAD_CONST             137 (<code object main at 0x000001857DB93D40, file "<dis>", line 1285>)
              660 LOAD_CONST             138 ('main')
              662 MAKE_FUNCTION            0
              664 STORE_NAME              82 (main)
@@ -341,42 +341,42 @@
              680 POP_TOP
          >>  682 LOAD_CONST               2 (None)
              684 RETURN_VALUE
-Disassembly of <code object UserInputError at 0x00000280E16455B0, file "<dis>", line 71>:
+Disassembly of <code object UserInputError at 0x000001857DB807C0, file "<dis>", line 71>:
  71           0 LOAD_NAME                0 (__name__)
               2 STORE_NAME               1 (__module__)
               4 LOAD_CONST               0 ('UserInputError')
               6 STORE_NAME               2 (__qualname__)
  72           8 LOAD_CONST               1 (None)
              10 RETURN_VALUE
-Disassembly of <code object is_windows at 0x00000280E1645660, file "<dis>", line 75>:
+Disassembly of <code object is_windows at 0x000001857DB80870, file "<dis>", line 75>:
  76           0 LOAD_GLOBAL              0 (platform)
               2 LOAD_METHOD              1 (system)
               4 CALL_METHOD              0
               6 LOAD_CONST               1 ('Windows')
               8 COMPARE_OP               2 (==)
              10 RETURN_VALUE
-Disassembly of <code object is_linux at 0x00000280E1645710, file "<dis>", line 79>:
+Disassembly of <code object is_linux at 0x000001857DB80920, file "<dis>", line 79>:
  80           0 LOAD_GLOBAL              0 (platform)
               2 LOAD_METHOD              1 (system)
               4 CALL_METHOD              0
               6 LOAD_CONST               1 ('Linux')
               8 COMPARE_OP               2 (==)
              10 RETURN_VALUE
-Disassembly of <code object is_macos at 0x00000280E16457C0, file "<dis>", line 83>:
+Disassembly of <code object is_macos at 0x000001857DB809D0, file "<dis>", line 83>:
  84           0 LOAD_GLOBAL              0 (platform)
               2 LOAD_METHOD              1 (system)
               4 CALL_METHOD              0
               6 LOAD_CONST               1 ('Darwin')
               8 COMPARE_OP               2 (==)
              10 RETURN_VALUE
-Disassembly of <code object is_ppc64le at 0x00000280E1645870, file "<dis>", line 87>:
+Disassembly of <code object is_ppc64le at 0x000001857DB80A80, file "<dis>", line 87>:
  88           0 LOAD_GLOBAL              0 (platform)
               2 LOAD_METHOD              1 (machine)
               4 CALL_METHOD              0
               6 LOAD_CONST               1 ('ppc64le')
               8 COMPARE_OP               2 (==)
              10 RETURN_VALUE
-Disassembly of <code object is_cygwin at 0x00000280E1645920, file "<dis>", line 91>:
+Disassembly of <code object is_cygwin at 0x000001857DB80B30, file "<dis>", line 91>:
  92           0 LOAD_GLOBAL              0 (platform)
               2 LOAD_METHOD              1 (system)
               4 CALL_METHOD              0
@@ -384,7 +384,7 @@ Disassembly of <code object is_cygwin at 0x00000280E1645920, file "<dis>", line 
               8 LOAD_CONST               1 ('CYGWIN_NT')
              10 CALL_METHOD              1
              12 RETURN_VALUE
-Disassembly of <code object get_input at 0x00000280E16459D0, file "<dis>", line 95>:
+Disassembly of <code object get_input at 0x000001857DB80BE0, file "<dis>", line 95>:
  96           0 SETUP_FINALLY           46 (to 48)
  97           2 SETUP_FINALLY           12 (to 16)
  98           4 LOAD_GLOBAL              0 (raw_input)
@@ -423,7 +423,7 @@ Disassembly of <code object get_input at 0x00000280E16459D0, file "<dis>", line 
         >>   70 END_FINALLY
 103     >>   72 LOAD_FAST                1 (answer)
              74 RETURN_VALUE
-Disassembly of <code object symlink_force at 0x00000280E1645A80, file "<dis>", line 106>:
+Disassembly of <code object symlink_force at 0x000001857DB80C90, file "<dis>", line 106>:
 113           0 SETUP_FINALLY           16 (to 18)
 114           2 LOAD_GLOBAL              0 (os)
               4 LOAD_METHOD              1 (symlink)
@@ -472,7 +472,7 @@ Disassembly of <code object symlink_force at 0x00000280E1645A80, file "<dis>", l
         >>   90 END_FINALLY
         >>   92 LOAD_CONST               1 (None)
              94 RETURN_VALUE
-Disassembly of <code object sed_in_place at 0x00000280E1645B30, file "<dis>", line 123>:
+Disassembly of <code object sed_in_place at 0x000001857DB80D40, file "<dis>", line 123>:
 131           0 LOAD_GLOBAL              0 (open)
               2 LOAD_FAST                0 (filename)
               4 LOAD_CONST               1 ('r')
@@ -512,7 +512,7 @@ Disassembly of <code object sed_in_place at 0x00000280E1645B30, file "<dis>", li
              72 END_FINALLY
              74 LOAD_CONST               3 (None)
              76 RETURN_VALUE
-Disassembly of <code object write_to_bazelrc at 0x00000280E1645BE0, file "<dis>", line 138>:
+Disassembly of <code object write_to_bazelrc at 0x000001857DB80DF0, file "<dis>", line 138>:
 139           0 LOAD_GLOBAL              0 (open)
               2 LOAD_GLOBAL              1 (_TF_BAZELRC)
               4 LOAD_CONST               1 ('a')
@@ -533,7 +533,7 @@ Disassembly of <code object write_to_bazelrc at 0x00000280E1645BE0, file "<dis>"
              34 END_FINALLY
              36 LOAD_CONST               0 (None)
              38 RETURN_VALUE
-Disassembly of <code object write_action_env_to_bazelrc at 0x00000280E1645C90, file "<dis>", line 143>:
+Disassembly of <code object write_action_env_to_bazelrc at 0x000001857DB80EA0, file "<dis>", line 143>:
 144           0 LOAD_GLOBAL              0 (write_to_bazelrc)
               2 LOAD_CONST               1 ('build --action_env {}="{}"')
               4 LOAD_METHOD              1 (format)
@@ -546,7 +546,7 @@ Disassembly of <code object write_action_env_to_bazelrc at 0x00000280E1645C90, f
              18 POP_TOP
              20 LOAD_CONST               0 (None)
              22 RETURN_VALUE
-Disassembly of <code object run_shell at 0x00000280E1645DF0, file "<dis>", line 147>:
+Disassembly of <code object run_shell at 0x000001857DB8E030, file "<dis>", line 147>:
 148           0 LOAD_FAST                2 (stderr)
               2 LOAD_CONST               0 (None)
               4 COMPARE_OP               8 (is)
@@ -603,7 +603,7 @@ Disassembly of <code object run_shell at 0x00000280E1645DF0, file "<dis>", line 
             106 LOAD_METHOD              7 (strip)
             108 CALL_METHOD              0
             110 RETURN_VALUE
-Disassembly of <code object cygpath at 0x00000280E1645D40, file "<dis>", line 160>:
+Disassembly of <code object cygpath at 0x000001857DB80F50, file "<dis>", line 160>:
 162           0 LOAD_GLOBAL              0 (os)
               2 LOAD_ATTR                1 (path)
               4 LOAD_METHOD              2 (abspath)
@@ -614,7 +614,7 @@ Disassembly of <code object cygpath at 0x00000280E1645D40, file "<dis>", line 16
              14 LOAD_CONST               2 ('/')
              16 CALL_METHOD              2
              18 RETURN_VALUE
-Disassembly of <code object get_python_path at 0x00000280E1645EA0, file "<dis>", line 165>:
+Disassembly of <code object get_python_path at 0x000001857DB8E0E0, file "<dis>", line 165>:
 167           0 BUILD_LIST               0
               2 STORE_FAST               2 (python_paths)
 168           4 LOAD_FAST                0 (environ_cp)
@@ -700,7 +700,7 @@ Disassembly of <code object get_python_path at 0x00000280E1645EA0, file "<dis>",
             164 JUMP_ABSOLUTE          138
 194     >>  166 LOAD_FAST                6 (paths)
             168 RETURN_VALUE
-Disassembly of <code object get_python_major_version at 0x00000280E1645F50, file "<dis>", line 197>:
+Disassembly of <code object get_python_major_version at 0x000001857D8ACC90, file "<dis>", line 197>:
 199           0 LOAD_GLOBAL              0 (run_shell)
               2 LOAD_FAST                0 (python_bin_path)
               4 LOAD_CONST               1 ('-c')
@@ -708,7 +708,7 @@ Disassembly of <code object get_python_major_version at 0x00000280E1645F50, file
               8 BUILD_LIST               3
              10 CALL_FUNCTION            1
              12 RETURN_VALUE
-Disassembly of <code object setup_python at 0x00000280E165D190, file "<dis>", line 202>:
+Disassembly of <code object setup_python at 0x000001857D7FA920, file "<dis>", line 202>:
 205           0 LOAD_GLOBAL              0 (sys)
               2 LOAD_ATTR                1 (executable)
               4 STORE_FAST               1 (default_python_bin_path)
@@ -929,7 +929,7 @@ Disassembly of <code object setup_python at 0x00000280E165D190, file "<dis>", li
             434 END_FINALLY
             436 LOAD_CONST              22 (None)
             438 RETURN_VALUE
-Disassembly of <code object reset_tf_configure_bazelrc at 0x00000280E165D0E0, file "<dis>", line 272>:
+Disassembly of <code object reset_tf_configure_bazelrc at 0x000001857D7F5A80, file "<dis>", line 272>:
 274           0 LOAD_GLOBAL              0 (open)
               2 LOAD_GLOBAL              1 (_TF_BAZELRC)
               4 LOAD_CONST               1 ('w')
@@ -939,7 +939,7 @@ Disassembly of <code object reset_tf_configure_bazelrc at 0x00000280E165D0E0, fi
              12 POP_TOP
              14 LOAD_CONST               2 (None)
              16 RETURN_VALUE
-Disassembly of <code object cleanup_makefile at 0x00000280E165D240, file "<dis>", line 277>:
+Disassembly of <code object cleanup_makefile at 0x000001857D7FA7C0, file "<dis>", line 277>:
 282           0 LOAD_GLOBAL              0 (os)
               2 LOAD_ATTR                1 (path)
               4 LOAD_METHOD              2 (join)
@@ -989,7 +989,7 @@ Disassembly of <code object cleanup_makefile at 0x00000280E165D240, file "<dis>"
         >>   92 JUMP_ABSOLUTE           42
         >>   94 LOAD_CONST               6 (None)
              96 RETURN_VALUE
-Disassembly of <code object get_var at 0x00000280E165D450, file "<dis>", line 291>:
+Disassembly of <code object get_var at 0x000001857D7FA5B0, file "<dis>", line 291>:
 322           0 LOAD_FAST                4 (question)
               2 POP_JUMP_IF_TRUE        14
 323           4 LOAD_CONST               1 ('Do you wish to build TensorFlow with {} support?')
@@ -1038,115 +1038,121 @@ Disassembly of <code object get_var at 0x00000280E165D450, file "<dis>", line 29
 339          90 LOAD_FAST                7 (var)
              92 LOAD_CONST               7 (None)
              94 COMPARE_OP               9 (is not)
-             96 POP_JUMP_IF_FALSE      178
+             96 POP_JUMP_IF_FALSE      188
 340          98 LOAD_FAST                7 (var)
             100 LOAD_METHOD              2 (strip)
             102 CALL_METHOD              0
             104 LOAD_METHOD              3 (lower)
             106 CALL_METHOD              0
             108 STORE_FAST               8 (var_content)
-341         110 LOAD_CONST               8 (('1', 't', 'true', 'y', 'yes'))
-            112 STORE_FAST               9 (true_strings)
-342         114 LOAD_CONST               9 (('0', 'f', 'false', 'n', 'no'))
-            116 STORE_FAST              10 (false_strings)
-343         118 LOAD_FAST                8 (var_content)
-            120 LOAD_FAST                9 (true_strings)
-            122 COMPARE_OP               6 (in)
-            124 POP_JUMP_IF_FALSE      132
-344         126 LOAD_CONST              10 (True)
-            128 STORE_FAST               7 (var)
-            130 JUMP_FORWARD            46 (to 178)
-345     >>  132 LOAD_FAST                8 (var_content)
-            134 LOAD_FAST               10 (false_strings)
-            136 COMPARE_OP               6 (in)
-            138 POP_JUMP_IF_FALSE      146
-346         140 LOAD_CONST              11 (False)
-            142 STORE_FAST               7 (var)
-            144 JUMP_FORWARD            32 (to 178)
-348     >>  146 LOAD_GLOBAL              4 (UserInputError)
-349         148 LOAD_CONST              12 ('Environment variable %s must be set as a boolean indicator.\nThe following are accepted as TRUE : %s.\nThe following are accepted as FALSE: %s.\nCurrent value is %s.')
-353         150 LOAD_FAST                1 (var_name)
-            152 LOAD_CONST              13 (', ')
-            154 LOAD_METHOD              5 (join)
-            156 LOAD_FAST                9 (true_strings)
-            158 CALL_METHOD              1
-            160 LOAD_CONST              13 (', ')
-            162 LOAD_METHOD              5 (join)
-            164 LOAD_FAST               10 (false_strings)
-            166 CALL_METHOD              1
-            168 LOAD_FAST                7 (var)
-            170 BUILD_TUPLE              4
-349         172 BINARY_MODULO
-348         174 CALL_FUNCTION            1
-            176 RAISE_VARARGS            1
-355     >>  178 LOAD_FAST                7 (var)
-            180 LOAD_CONST               7 (None)
-            182 COMPARE_OP               8 (is)
-            184 EXTENDED_ARG             1
-            186 POP_JUMP_IF_FALSE      308
-356         188 LOAD_GLOBAL              6 (get_input)
-            190 LOAD_FAST                4 (question)
-            192 CALL_FUNCTION            1
-            194 STORE_FAST              11 (user_input_origin)
-357         196 LOAD_FAST               11 (user_input_origin)
-            198 LOAD_METHOD              2 (strip)
-            200 CALL_METHOD              0
-            202 LOAD_METHOD              3 (lower)
-            204 CALL_METHOD              0
-            206 STORE_FAST              12 (user_input)
-358         208 LOAD_FAST               12 (user_input)
-            210 LOAD_CONST              14 ('y')
-            212 COMPARE_OP               2 (==)
-            214 POP_JUMP_IF_FALSE      230
-359         216 LOAD_GLOBAL              7 (print)
-            218 LOAD_FAST                5 (yes_reply)
-            220 CALL_FUNCTION            1
-            222 POP_TOP
-360         224 LOAD_CONST              10 (True)
-            226 STORE_FAST               7 (var)
-            228 JUMP_ABSOLUTE          178
-361     >>  230 LOAD_FAST               12 (user_input)
-            232 LOAD_CONST              15 ('n')
-            234 COMPARE_OP               2 (==)
-            236 POP_JUMP_IF_FALSE      252
-362         238 LOAD_GLOBAL              7 (print)
-            240 LOAD_FAST                6 (no_reply)
-            242 CALL_FUNCTION            1
-            244 POP_TOP
-363         246 LOAD_CONST              11 (False)
-            248 STORE_FAST               7 (var)
-            250 JUMP_ABSOLUTE          178
-364     >>  252 LOAD_FAST               12 (user_input)
-            254 EXTENDED_ARG             1
-            256 POP_JUMP_IF_TRUE       292
-365         258 LOAD_FAST                3 (enabled_by_default)
-            260 EXTENDED_ARG             1
-            262 POP_JUMP_IF_FALSE      278
-366         264 LOAD_GLOBAL              7 (print)
-            266 LOAD_FAST                5 (yes_reply)
-            268 CALL_FUNCTION            1
-            270 POP_TOP
-367         272 LOAD_CONST              10 (True)
-            274 STORE_FAST               7 (var)
-            276 JUMP_FORWARD            12 (to 290)
-369     >>  278 LOAD_GLOBAL              7 (print)
-            280 LOAD_FAST                6 (no_reply)
-            282 CALL_FUNCTION            1
-            284 POP_TOP
-370         286 LOAD_CONST              11 (False)
-            288 STORE_FAST               7 (var)
-        >>  290 JUMP_ABSOLUTE          178
-372     >>  292 LOAD_GLOBAL              7 (print)
-            294 LOAD_CONST              16 ('Invalid selection: {}')
-            296 LOAD_METHOD              0 (format)
-            298 LOAD_FAST               11 (user_input_origin)
-            300 CALL_METHOD              1
-            302 CALL_FUNCTION            1
-            304 POP_TOP
-            306 JUMP_ABSOLUTE          178
-373     >>  308 LOAD_FAST                7 (var)
-            310 RETURN_VALUE
-Disassembly of <code object set_build_var at 0x00000280E165D3A0, file "<dis>", line 376>:
+341         110 LOAD_CONST               8 ('1')
+            112 LOAD_CONST               9 ('t')
+            114 LOAD_CONST              10 ('true')
+            116 LOAD_CONST              11 ('y')
+            118 LOAD_FAST                7 (var)
+            120 BUILD_TUPLE              5
+            122 STORE_FAST               9 (true_strings)
+342         124 LOAD_CONST              12 (('0', 'f', 'false', 'n', 'no'))
+            126 STORE_FAST              10 (false_strings)
+343         128 LOAD_FAST                8 (var_content)
+            130 LOAD_FAST                9 (true_strings)
+            132 COMPARE_OP               6 (in)
+            134 POP_JUMP_IF_FALSE      142
+344         136 LOAD_CONST              13 (True)
+            138 STORE_FAST               7 (var)
+            140 JUMP_FORWARD            46 (to 188)
+345     >>  142 LOAD_FAST                8 (var_content)
+            144 LOAD_FAST               10 (false_strings)
+            146 COMPARE_OP               6 (in)
+            148 POP_JUMP_IF_FALSE      156
+346         150 LOAD_CONST              14 (False)
+            152 STORE_FAST               7 (var)
+            154 JUMP_FORWARD            32 (to 188)
+348     >>  156 LOAD_GLOBAL              4 (UserInputError)
+349         158 LOAD_CONST              15 ('Environment variable %s must be set as a boolean indicator.\nThe following are accepted as TRUE : %s.\nThe following are accepted as FALSE: %s.\nCurrent value is %s.')
+353         160 LOAD_FAST                1 (var_name)
+            162 LOAD_CONST              16 (', ')
+            164 LOAD_METHOD              5 (join)
+            166 LOAD_FAST                9 (true_strings)
+            168 CALL_METHOD              1
+            170 LOAD_CONST              16 (', ')
+            172 LOAD_METHOD              5 (join)
+            174 LOAD_FAST               10 (false_strings)
+            176 CALL_METHOD              1
+            178 LOAD_FAST                7 (var)
+            180 BUILD_TUPLE              4
+349         182 BINARY_MODULO
+348         184 CALL_FUNCTION            1
+            186 RAISE_VARARGS            1
+355     >>  188 LOAD_FAST                7 (var)
+            190 LOAD_CONST               7 (None)
+            192 COMPARE_OP               8 (is)
+            194 EXTENDED_ARG             1
+            196 POP_JUMP_IF_FALSE      320
+356         198 LOAD_GLOBAL              6 (get_input)
+            200 LOAD_FAST                4 (question)
+            202 CALL_FUNCTION            1
+            204 STORE_FAST              11 (user_input_origin)
+357         206 LOAD_FAST               11 (user_input_origin)
+            208 LOAD_METHOD              2 (strip)
+            210 CALL_METHOD              0
+            212 LOAD_METHOD              3 (lower)
+            214 CALL_METHOD              0
+            216 STORE_FAST              12 (user_input)
+358         218 LOAD_FAST               12 (user_input)
+            220 LOAD_CONST              11 ('y')
+            222 COMPARE_OP               2 (==)
+            224 POP_JUMP_IF_FALSE      240
+359         226 LOAD_GLOBAL              7 (print)
+            228 LOAD_FAST                5 (yes_reply)
+            230 CALL_FUNCTION            1
+            232 POP_TOP
+360         234 LOAD_CONST              13 (True)
+            236 STORE_FAST               7 (var)
+            238 JUMP_ABSOLUTE          188
+361     >>  240 LOAD_FAST               12 (user_input)
+            242 LOAD_CONST              17 ('n')
+            244 COMPARE_OP               2 (==)
+            246 EXTENDED_ARG             1
+            248 POP_JUMP_IF_FALSE      264
+362         250 LOAD_GLOBAL              7 (print)
+            252 LOAD_FAST                6 (no_reply)
+            254 CALL_FUNCTION            1
+            256 POP_TOP
+363         258 LOAD_CONST              14 (False)
+            260 STORE_FAST               7 (var)
+            262 JUMP_ABSOLUTE          188
+364     >>  264 LOAD_FAST               12 (user_input)
+            266 EXTENDED_ARG             1
+            268 POP_JUMP_IF_TRUE       304
+365         270 LOAD_FAST                3 (enabled_by_default)
+            272 EXTENDED_ARG             1
+            274 POP_JUMP_IF_FALSE      290
+366         276 LOAD_GLOBAL              7 (print)
+            278 LOAD_FAST                5 (yes_reply)
+            280 CALL_FUNCTION            1
+            282 POP_TOP
+367         284 LOAD_CONST              13 (True)
+            286 STORE_FAST               7 (var)
+            288 JUMP_FORWARD            12 (to 302)
+369     >>  290 LOAD_GLOBAL              7 (print)
+            292 LOAD_FAST                6 (no_reply)
+            294 CALL_FUNCTION            1
+            296 POP_TOP
+370         298 LOAD_CONST              14 (False)
+            300 STORE_FAST               7 (var)
+        >>  302 JUMP_ABSOLUTE          188
+372     >>  304 LOAD_GLOBAL              7 (print)
+            306 LOAD_CONST              18 ('Invalid selection: {}')
+            308 LOAD_METHOD              0 (format)
+            310 LOAD_FAST               11 (user_input_origin)
+            312 CALL_METHOD              1
+            314 CALL_FUNCTION            1
+            316 POP_TOP
+            318 JUMP_ABSOLUTE          188
+373     >>  320 LOAD_FAST                7 (var)
+            322 RETURN_VALUE
+Disassembly of <code object set_build_var at 0x000001857D7FA500, file "<dis>", line 376>:
 397           0 LOAD_GLOBAL              0 (str)
               2 LOAD_GLOBAL              1 (int)
               4 LOAD_GLOBAL              2 (get_var)
@@ -1195,7 +1201,7 @@ Disassembly of <code object set_build_var at 0x00000280E165D3A0, file "<dis>", l
              90 POP_TOP
         >>   92 LOAD_CONST               4 (None)
              94 RETURN_VALUE
-Disassembly of <code object set_action_env_var at 0x00000280E165D500, file "<dis>", line 410>:
+Disassembly of <code object set_action_env_var at 0x000001857D7FA660, file "<dis>", line 410>:
 434           0 LOAD_GLOBAL              0 (int)
 435           2 LOAD_GLOBAL              1 (get_var)
               4 LOAD_FAST                0 (environ_cp)
@@ -1232,7 +1238,7 @@ Disassembly of <code object set_action_env_var at 0x00000280E165D500, file "<dis
              66 STORE_SUBSCR
              68 LOAD_CONST               2 (None)
              70 RETURN_VALUE
-Disassembly of <code object convert_version_to_int at 0x00000280E165D7C0, file "<dis>", line 445>:
+Disassembly of <code object convert_version_to_int at 0x000001857D7FA870, file "<dis>", line 445>:
 457           0 LOAD_FAST                0 (version)
               2 LOAD_METHOD              0 (split)
               4 LOAD_CONST               1 ('-')
@@ -1270,7 +1276,7 @@ Disassembly of <code object convert_version_to_int at 0x00000280E165D7C0, file "
              68 JUMP_ABSOLUTE           50
 466     >>   70 LOAD_CONST               7 ('')
              72 LOAD_METHOD              4 (join)
-             74 LOAD_CONST               8 (<code object <listcomp> at 0x00000280E165D710, file "<dis>", line 466>)
+             74 LOAD_CONST               8 (<code object <listcomp> at 0x000001857D7FA710, file "<dis>", line 466>)
              76 LOAD_CONST               9 ('convert_version_to_int.<locals>.<listcomp>')
              78 MAKE_FUNCTION            0
              80 LOAD_FAST                1 (version_segments)
@@ -1282,7 +1288,7 @@ Disassembly of <code object convert_version_to_int at 0x00000280E165D7C0, file "
              92 LOAD_FAST                3 (version_str)
              94 CALL_FUNCTION            1
              96 RETURN_VALUE
-Disassembly of <code object <listcomp> at 0x00000280E165D710, file "<dis>", line 466>:
+Disassembly of <code object <listcomp> at 0x000001857D7FA710, file "<dis>", line 466>:
 466           0 BUILD_LIST               0
               2 LOAD_FAST                0 (.0)
         >>    4 FOR_ITER                16 (to 22)
@@ -1295,7 +1301,7 @@ Disassembly of <code object <listcomp> at 0x00000280E165D710, file "<dis>", line
              18 LIST_APPEND              2
              20 JUMP_ABSOLUTE            4
         >>   22 RETURN_VALUE
-Disassembly of <code object check_bazel_version at 0x00000280E165D870, file "<dis>", line 470>:
+Disassembly of <code object check_bazel_version at 0x000001857D0839D0, file "<dis>", line 470>:
 480           0 LOAD_GLOBAL              0 (which)
               2 LOAD_CONST               1 ('bazel')
               4 CALL_FUNCTION            1
@@ -1409,7 +1415,7 @@ Disassembly of <code object check_bazel_version at 0x00000280E165D870, file "<di
             220 POP_TOP
 515     >>  222 LOAD_FAST                4 (curr_version)
             224 RETURN_VALUE
-Disassembly of <code object set_cc_opt_flags at 0x00000280E165D920, file "<dis>", line 518>:
+Disassembly of <code object set_cc_opt_flags at 0x000001857D083A80, file "<dis>", line 518>:
 526           0 LOAD_GLOBAL              0 (is_ppc64le)
               2 CALL_FUNCTION            0
               4 POP_JUMP_IF_FALSE       12
@@ -1456,7 +1462,7 @@ Disassembly of <code object set_cc_opt_flags at 0x00000280E165D920, file "<dis>"
              86 JUMP_ABSOLUTE           58
         >>   88 LOAD_CONST               8 (None)
              90 RETURN_VALUE
-Disassembly of <code object set_tf_cuda_clang at 0x00000280E165D9D0, file "<dis>", line 548>:
+Disassembly of <code object set_tf_cuda_clang at 0x000001857DB8E190, file "<dis>", line 548>:
 554           0 LOAD_CONST               1 ('Do you want to use clang as CUDA compiler?')
               2 STORE_FAST               1 (question)
 555           4 LOAD_CONST               2 ('Clang will be used as CUDA compiler.')
@@ -1477,7 +1483,7 @@ Disassembly of <code object set_tf_cuda_clang at 0x00000280E165D9D0, file "<dis>
              34 POP_TOP
              36 LOAD_CONST               5 (None)
              38 RETURN_VALUE
-Disassembly of <code object set_tf_download_clang at 0x00000280E165DA80, file "<dis>", line 568>:
+Disassembly of <code object set_tf_download_clang at 0x000001857DB8E240, file "<dis>", line 568>:
 570           0 LOAD_CONST               1 ('Do you wish to download a fresh release of clang? (Experimental)')
               2 STORE_FAST               1 (question)
 571           4 LOAD_CONST               2 ('Clang will be downloaded and used to compile tensorflow.')
@@ -1498,7 +1504,7 @@ Disassembly of <code object set_tf_download_clang at 0x00000280E165DA80, file "<
              34 POP_TOP
              36 LOAD_CONST               5 (None)
              38 RETURN_VALUE
-Disassembly of <code object get_from_env_or_user_or_default at 0x00000280E165DB30, file "<dis>", line 584>:
+Disassembly of <code object get_from_env_or_user_or_default at 0x000001857DB8E2F0, file "<dis>", line 584>:
 600           0 LOAD_FAST                0 (environ_cp)
               2 LOAD_METHOD              0 (get)
               4 LOAD_FAST                1 (var_name)
@@ -1520,7 +1526,7 @@ Disassembly of <code object get_from_env_or_user_or_default at 0x00000280E165DB3
              36 STORE_FAST               4 (var)
 606     >>   38 LOAD_FAST                4 (var)
              40 RETURN_VALUE
-Disassembly of <code object set_clang_cuda_compiler_path at 0x00000280E165DBE0, file "<dis>", line 609>:
+Disassembly of <code object set_clang_cuda_compiler_path at 0x000001857DB8E3A0, file "<dis>", line 609>:
 611           0 LOAD_GLOBAL              0 (which)
               2 LOAD_CONST               1 ('clang')
               4 CALL_FUNCTION            1
@@ -1567,7 +1573,7 @@ Disassembly of <code object set_clang_cuda_compiler_path at 0x00000280E165DBE0, 
              86 POP_TOP
              88 LOAD_CONST               6 (None)
              90 RETURN_VALUE
-Disassembly of <code object prompt_loop_or_load_from_env at 0x00000280E165DC90, file "<dis>", line 632>:
+Disassembly of <code object prompt_loop_or_load_from_env at 0x000001857DB8E450, file "<dis>", line 632>:
 673           0 LOAD_FAST                0 (environ_cp)
               2 LOAD_METHOD              0 (get)
               4 LOAD_FAST                1 (var_name)
@@ -1641,7 +1647,7 @@ Disassembly of <code object prompt_loop_or_load_from_env at 0x00000280E165DC90, 
             140 STORE_SUBSCR
 695         142 LOAD_FAST               12 (val)
             144 RETURN_VALUE
-Disassembly of <code object create_android_ndk_rule at 0x00000280E165DF50, file "<dis>", line 698>:
+Disassembly of <code object create_android_ndk_rule at 0x000001857DB8E660, file "<dis>", line 698>:
 700           0 LOAD_GLOBAL              0 (is_windows)
               2 CALL_FUNCTION            0
               4 POP_JUMP_IF_TRUE        12
@@ -1673,7 +1679,7 @@ Disassembly of <code object create_android_ndk_rule at 0x00000280E165DF50, file 
              56 BINARY_SUBSCR
              58 BINARY_MODULO
              60 STORE_FAST               1 (default_ndk_path)
-708     >>   62 LOAD_CONST               5 (<code object valid_ndk_path at 0x00000280E165DDF0, file "<dis>", line 708>)
+708     >>   62 LOAD_CONST               5 (<code object valid_ndk_path at 0x000001857DB8E500, file "<dis>", line 708>)
              64 LOAD_CONST               6 ('create_android_ndk_rule.<locals>.valid_ndk_path')
              66 MAKE_FUNCTION            0
              68 STORE_FAST               2 (valid_ndk_path)
@@ -1702,7 +1708,7 @@ Disassembly of <code object create_android_ndk_rule at 0x00000280E165DF50, file 
             114 POP_TOP
             116 LOAD_CONST              12 (None)
             118 RETURN_VALUE
-Disassembly of <code object valid_ndk_path at 0x00000280E165DDF0, file "<dis>", line 708>:
+Disassembly of <code object valid_ndk_path at 0x000001857DB8E500, file "<dis>", line 708>:
 709           0 LOAD_GLOBAL              0 (os)
               2 LOAD_ATTR                1 (path)
               4 LOAD_METHOD              2 (exists)
@@ -1720,7 +1726,7 @@ Disassembly of <code object valid_ndk_path at 0x00000280E165DDF0, file "<dis>", 
              28 CALL_METHOD              2
              30 CALL_METHOD              1
 709     >>   32 RETURN_VALUE
-Disassembly of <code object create_android_sdk_rule at 0x00000280E165C2F0, file "<dis>", line 726>:
+Disassembly of <code object create_android_sdk_rule at 0x000001857DB8E920, file "<dis>", line 726>:
 728           0 LOAD_GLOBAL              0 (is_windows)
               2 CALL_FUNCTION            0
               4 POP_JUMP_IF_TRUE        12
@@ -1752,7 +1758,7 @@ Disassembly of <code object create_android_sdk_rule at 0x00000280E165C2F0, file 
              56 BINARY_SUBSCR
              58 BINARY_MODULO
              60 STORE_FAST               1 (default_sdk_path)
-735     >>   62 LOAD_CONST               5 (<code object valid_sdk_path at 0x00000280E165C030, file "<dis>", line 735>)
+735     >>   62 LOAD_CONST               5 (<code object valid_sdk_path at 0x000001857DB8E5B0, file "<dis>", line 735>)
              64 LOAD_CONST               6 ('create_android_sdk_rule.<locals>.valid_sdk_path')
              66 MAKE_FUNCTION            0
              68 STORE_FAST               2 (valid_sdk_path)
@@ -1780,7 +1786,7 @@ Disassembly of <code object create_android_sdk_rule at 0x00000280E165C2F0, file 
             112 CALL_METHOD              1
             114 CALL_FUNCTION            1
             116 STORE_FAST               4 (api_levels)
-751         118 LOAD_CONST              12 (<code object <listcomp> at 0x00000280E165C0E0, file "<dis>", line 751>)
+751         118 LOAD_CONST              12 (<code object <listcomp> at 0x000001857DB8E710, file "<dis>", line 751>)
             120 LOAD_CONST              13 ('create_android_sdk_rule.<locals>.<listcomp>')
             122 MAKE_FUNCTION            0
             124 LOAD_FAST                4 (api_levels)
@@ -1789,7 +1795,7 @@ Disassembly of <code object create_android_sdk_rule at 0x00000280E165C2F0, file 
             130 STORE_FAST               4 (api_levels)
 753         132 LOAD_CLOSURE             0 (android_sdk_home_path)
             134 BUILD_TUPLE              1
-            136 LOAD_CONST              14 (<code object valid_api_level at 0x00000280E165C190, file "<dis>", line 753>)
+            136 LOAD_CONST              14 (<code object valid_api_level at 0x000001857DB8E7C0, file "<dis>", line 753>)
             138 LOAD_CONST              15 ('create_android_sdk_rule.<locals>.valid_api_level')
             140 MAKE_FUNCTION            8 (closure)
             142 STORE_FAST               5 (valid_api_level)
@@ -1823,7 +1829,7 @@ Disassembly of <code object create_android_sdk_rule at 0x00000280E165C2F0, file 
             198 STORE_FAST               8 (versions)
 770         200 LOAD_CLOSURE             0 (android_sdk_home_path)
             202 BUILD_TUPLE              1
-            204 LOAD_CONST              21 (<code object valid_build_tools at 0x00000280E165C240, file "<dis>", line 770>)
+            204 LOAD_CONST              21 (<code object valid_build_tools at 0x000001857DB8E870, file "<dis>", line 770>)
             206 LOAD_CONST              22 ('create_android_sdk_rule.<locals>.valid_build_tools')
             208 MAKE_FUNCTION            8 (closure)
             210 STORE_FAST               9 (valid_build_tools)
@@ -1858,7 +1864,7 @@ Disassembly of <code object create_android_sdk_rule at 0x00000280E165C2F0, file 
             268 POP_TOP
             270 LOAD_CONST              27 (None)
             272 RETURN_VALUE
-Disassembly of <code object valid_sdk_path at 0x00000280E165C030, file "<dis>", line 735>:
+Disassembly of <code object valid_sdk_path at 0x000001857DB8E5B0, file "<dis>", line 735>:
 736           0 LOAD_GLOBAL              0 (os)
               2 LOAD_ATTR                1 (path)
               4 LOAD_METHOD              2 (exists)
@@ -1887,7 +1893,7 @@ Disassembly of <code object valid_sdk_path at 0x00000280E165C030, file "<dis>", 
              50 CALL_METHOD              2
              52 CALL_METHOD              1
 736     >>   54 RETURN_VALUE
-Disassembly of <code object <listcomp> at 0x00000280E165C0E0, file "<dis>", line 751>:
+Disassembly of <code object <listcomp> at 0x000001857DB8E710, file "<dis>", line 751>:
 751           0 BUILD_LIST               0
               2 LOAD_FAST                0 (.0)
         >>    4 FOR_ITER                16 (to 22)
@@ -1900,7 +1906,7 @@ Disassembly of <code object <listcomp> at 0x00000280E165C0E0, file "<dis>", line
              18 LIST_APPEND              2
              20 JUMP_ABSOLUTE            4
         >>   22 RETURN_VALUE
-Disassembly of <code object valid_api_level at 0x00000280E165C190, file "<dis>", line 753>:
+Disassembly of <code object valid_api_level at 0x000001857DB8E7C0, file "<dis>", line 753>:
 754           0 LOAD_GLOBAL              0 (os)
               2 LOAD_ATTR                1 (path)
               4 LOAD_METHOD              2 (exists)
@@ -1915,7 +1921,7 @@ Disassembly of <code object valid_api_level at 0x00000280E165C190, file "<dis>",
 755          22 CALL_METHOD              3
 754          24 CALL_METHOD              1
              26 RETURN_VALUE
-Disassembly of <code object valid_build_tools at 0x00000280E165C240, file "<dis>", line 770>:
+Disassembly of <code object valid_build_tools at 0x000001857DB8E870, file "<dis>", line 770>:
 771           0 LOAD_GLOBAL              0 (os)
               2 LOAD_ATTR                1 (path)
               4 LOAD_METHOD              2 (exists)
@@ -1928,7 +1934,7 @@ Disassembly of <code object valid_build_tools at 0x00000280E165C240, file "<dis>
              18 CALL_METHOD              3
 771          20 CALL_METHOD              1
              22 RETURN_VALUE
-Disassembly of <code object get_ndk_api_level at 0x00000280E165C660, file "<dis>", line 790>:
+Disassembly of <code object get_ndk_api_level at 0x000001857DB8EB30, file "<dis>", line 790>:
 794           0 LOAD_CONST               1 ('%s/source.properties')
               2 LOAD_DEREF               0 (android_ndk_home_path)
               4 BINARY_MODULO
@@ -2005,7 +2011,7 @@ Disassembly of <code object get_ndk_api_level at 0x00000280E165C660, file "<dis>
             146 CALL_METHOD              1
             148 CALL_FUNCTION            1
             150 STORE_FAST               8 (api_levels)
-817         152 LOAD_CONST               8 (<code object <listcomp> at 0x00000280E165C3A0, file "<dis>", line 817>)
+817         152 LOAD_CONST               8 (<code object <listcomp> at 0x000001857DB8E9D0, file "<dis>", line 817>)
             154 LOAD_CONST               9 ('get_ndk_api_level.<locals>.<listcomp>')
             156 MAKE_FUNCTION            0
 818         158 LOAD_FAST                8 (api_levels)
@@ -2014,7 +2020,7 @@ Disassembly of <code object get_ndk_api_level at 0x00000280E165C660, file "<dis>
             164 STORE_FAST               8 (api_levels)
 821         166 LOAD_CLOSURE             0 (android_ndk_home_path)
             168 BUILD_TUPLE              1
-            170 LOAD_CONST              10 (<code object valid_api_level at 0x00000280E165C450, file "<dis>", line 821>)
+            170 LOAD_CONST              10 (<code object valid_api_level at 0x000001857DB8EA80, file "<dis>", line 821>)
             172 LOAD_CONST              11 ('get_ndk_api_level.<locals>.valid_api_level')
             174 MAKE_FUNCTION            8 (closure)
             176 STORE_FAST               9 (valid_api_level)
@@ -2032,7 +2038,7 @@ Disassembly of <code object get_ndk_api_level at 0x00000280E165C660, file "<dis>
             200 STORE_FAST              10 (android_ndk_api_level)
 835         202 LOAD_FAST               10 (android_ndk_api_level)
             204 RETURN_VALUE
-Disassembly of <code object <listcomp> at 0x00000280E165C3A0, file "<dis>", line 817>:
+Disassembly of <code object <listcomp> at 0x000001857DB8E9D0, file "<dis>", line 817>:
 817           0 BUILD_LIST               0
               2 LOAD_FAST                0 (.0)
         >>    4 FOR_ITER                24 (to 30)
@@ -2049,7 +2055,7 @@ Disassembly of <code object <listcomp> at 0x00000280E165C3A0, file "<dis>", line
              26 LIST_APPEND              2
              28 JUMP_ABSOLUTE            4
         >>   30 RETURN_VALUE
-Disassembly of <code object valid_api_level at 0x00000280E165C450, file "<dis>", line 821>:
+Disassembly of <code object valid_api_level at 0x000001857DB8EA80, file "<dis>", line 821>:
 822           0 LOAD_GLOBAL              0 (os)
               2 LOAD_ATTR                1 (path)
               4 LOAD_METHOD              2 (exists)
@@ -2064,7 +2070,7 @@ Disassembly of <code object valid_api_level at 0x00000280E165C450, file "<dis>",
 823          22 CALL_METHOD              3
 822          24 CALL_METHOD              1
              26 RETURN_VALUE
-Disassembly of <code object set_gcc_host_compiler_path at 0x00000280E165C710, file "<dis>", line 838>:
+Disassembly of <code object set_gcc_host_compiler_path at 0x000001857DB8EBE0, file "<dis>", line 838>:
 840           0 LOAD_GLOBAL              0 (which)
               2 LOAD_CONST               1 ('gcc')
               4 CALL_FUNCTION            1
@@ -2110,7 +2116,7 @@ Disassembly of <code object set_gcc_host_compiler_path at 0x00000280E165C710, fi
              84 POP_TOP
              86 LOAD_CONST              10 (None)
              88 RETURN_VALUE
-Disassembly of <code object reformat_version_sequence at 0x00000280E165C7C0, file "<dis>", line 861>:
+Disassembly of <code object reformat_version_sequence at 0x000001857DB8EC90, file "<dis>", line 861>:
 877           0 LOAD_FAST                0 (version_str)
               2 LOAD_METHOD              0 (split)
               4 LOAD_CONST               1 ('.')
@@ -2142,7 +2148,7 @@ Disassembly of <code object reformat_version_sequence at 0x00000280E165C7C0, fil
              56 BINARY_SUBSCR
              58 CALL_METHOD              1
              60 RETURN_VALUE
-Disassembly of <code object set_tf_cuda_paths at 0x00000280E165C870, file "<dis>", line 884>:
+Disassembly of <code object set_tf_cuda_paths at 0x000001857DB8ED40, file "<dis>", line 884>:
 887           0 LOAD_CONST               1 ('Please specify the comma-separated list of base paths to look for CUDA libraries and headers. [Leave empty to use the default]: ')
 886           2 STORE_FAST               1 (ask_cuda_paths)
 889           4 LOAD_GLOBAL              0 (get_from_env_or_user_or_default)
@@ -2160,7 +2166,7 @@ Disassembly of <code object set_tf_cuda_paths at 0x00000280E165C870, file "<dis>
              28 STORE_SUBSCR
         >>   30 LOAD_CONST               4 (None)
              32 RETURN_VALUE
-Disassembly of <code object set_tf_cuda_version at 0x00000280E165C920, file "<dis>", line 895>:
+Disassembly of <code object set_tf_cuda_version at 0x000001857DB8EDF0, file "<dis>", line 895>:
 898           0 LOAD_CONST               1 ('Please specify the CUDA SDK version you want to use. [Leave empty to default to CUDA %s]: ')
 899           2 LOAD_GLOBAL              0 (_DEFAULT_CUDA_VERSION)
 897           4 BINARY_MODULO
@@ -2178,7 +2184,7 @@ Disassembly of <code object set_tf_cuda_version at 0x00000280E165C920, file "<di
              28 STORE_SUBSCR
              30 LOAD_CONST               3 (None)
              32 RETURN_VALUE
-Disassembly of <code object set_tf_cudnn_version at 0x00000280E165C9D0, file "<dis>", line 907>:
+Disassembly of <code object set_tf_cudnn_version at 0x000001857DB8EEA0, file "<dis>", line 907>:
 910           0 LOAD_CONST               1 ('Please specify the cuDNN version you want to use. [Leave empty to default to cuDNN %s]: ')
 911           2 LOAD_GLOBAL              0 (_DEFAULT_CUDNN_VERSION)
 909           4 BINARY_MODULO
@@ -2196,7 +2202,7 @@ Disassembly of <code object set_tf_cudnn_version at 0x00000280E165C9D0, file "<d
              28 STORE_SUBSCR
              30 LOAD_CONST               3 (None)
              32 RETURN_VALUE
-Disassembly of <code object is_cuda_compatible at 0x00000280E165CA80, file "<dis>", line 919>:
+Disassembly of <code object is_cuda_compatible at 0x000001857DB8EF50, file "<dis>", line 919>:
 921           0 LOAD_GLOBAL              0 (which)
               2 LOAD_CONST               1 ('ldd')
               4 CALL_FUNCTION            1
@@ -2314,7 +2320,7 @@ Disassembly of <code object is_cuda_compatible at 0x00000280E165CA80, file "<dis
             228 JUMP_IF_FALSE_OR_POP   232
             230 LOAD_FAST               10 (cuda_ok)
         >>  232 RETURN_VALUE
-Disassembly of <code object set_tf_tensorrt_version at 0x00000280E165CB30, file "<dis>", line 948>:
+Disassembly of <code object set_tf_tensorrt_version at 0x000001857DB93030, file "<dis>", line 948>:
 950           0 LOAD_GLOBAL              0 (is_linux)
               2 CALL_FUNCTION            0
               4 POP_JUMP_IF_TRUE        14
@@ -2349,7 +2355,7 @@ Disassembly of <code object set_tf_tensorrt_version at 0x00000280E165CB30, file 
              62 STORE_SUBSCR
              64 LOAD_CONST               4 (None)
              66 RETURN_VALUE
-Disassembly of <code object set_tf_nccl_version at 0x00000280E165CBE0, file "<dis>", line 965>:
+Disassembly of <code object set_tf_nccl_version at 0x000001857DB930E0, file "<dis>", line 965>:
 967           0 LOAD_GLOBAL              0 (is_linux)
               2 CALL_FUNCTION            0
               4 POP_JUMP_IF_TRUE        14
@@ -2378,7 +2384,7 @@ Disassembly of <code object set_tf_nccl_version at 0x00000280E165CBE0, file "<di
              50 STORE_SUBSCR
              52 LOAD_CONST               3 (None)
              54 RETURN_VALUE
-Disassembly of <code object get_native_cuda_compute_capabilities at 0x00000280E165CDF0, file "<dis>", line 982>:
+Disassembly of <code object get_native_cuda_compute_capabilities at 0x000001857DB932F0, file "<dis>", line 982>:
  991           0 LOAD_GLOBAL              0 (os)
                2 LOAD_ATTR                1 (path)
                4 LOAD_METHOD              2 (join)
@@ -2417,7 +2423,7 @@ Disassembly of <code object get_native_cuda_compute_capabilities at 0x00000280E1
               70 STORE_DEREF              0 (pattern)
  997          72 LOAD_CLOSURE             0 (pattern)
               74 BUILD_TUPLE              1
-              76 LOAD_CONST               5 (<code object <listcomp> at 0x00000280E165CC90, file "<dis>", line 997>)
+              76 LOAD_CONST               5 (<code object <listcomp> at 0x000001857DB93190, file "<dis>", line 997>)
               78 LOAD_CONST               6 ('get_native_cuda_compute_capabilities.<locals>.<listcomp>')
               80 MAKE_FUNCTION            8 (closure)
               82 LOAD_FAST                2 (output)
@@ -2426,7 +2432,7 @@ Disassembly of <code object get_native_cuda_compute_capabilities at 0x00000280E1
               88 STORE_FAST               2 (output)
  998          90 LOAD_CONST               7 (',')
               92 LOAD_METHOD              2 (join)
-              94 LOAD_CONST               8 (<code object <genexpr> at 0x00000280E165CD40, file "<dis>", line 998>)
+              94 LOAD_CONST               8 (<code object <genexpr> at 0x000001857DB93240, file "<dis>", line 998>)
               96 LOAD_CONST               9 ('get_native_cuda_compute_capabilities.<locals>.<genexpr>')
               98 MAKE_FUNCTION            0
              100 LOAD_FAST                2 (output)
@@ -2454,7 +2460,7 @@ Disassembly of <code object get_native_cuda_compute_capabilities at 0x00000280E1
              144 STORE_FAST               2 (output)
 1003     >>  146 LOAD_FAST                2 (output)
              148 RETURN_VALUE
-Disassembly of <code object <listcomp> at 0x00000280E165CC90, file "<dis>", line 997>:
+Disassembly of <code object <listcomp> at 0x000001857DB93190, file "<dis>", line 997>:
 997           0 BUILD_LIST               0
               2 LOAD_FAST                0 (.0)
         >>    4 FOR_ITER                22 (to 28)
@@ -2470,7 +2476,7 @@ Disassembly of <code object <listcomp> at 0x00000280E165CC90, file "<dis>", line
              24 LIST_APPEND              2
              26 JUMP_ABSOLUTE            4
         >>   28 RETURN_VALUE
-Disassembly of <code object <genexpr> at 0x00000280E165CD40, file "<dis>", line 998>:
+Disassembly of <code object <genexpr> at 0x000001857DB93240, file "<dis>", line 998>:
 998           0 LOAD_FAST                0 (.0)
         >>    2 FOR_ITER                22 (to 26)
               4 STORE_FAST               1 (x)
@@ -2486,7 +2492,7 @@ Disassembly of <code object <genexpr> at 0x00000280E165CD40, file "<dis>", line 
              24 JUMP_ABSOLUTE            2
         >>   26 LOAD_CONST               0 (None)
              28 RETURN_VALUE
-Disassembly of <code object set_tf_cuda_compute_capabilities at 0x00000280E165CF50, file "<dis>", line 1006>:
+Disassembly of <code object set_tf_cuda_compute_capabilities at 0x000001857DB93450, file "<dis>", line 1006>:
 1009     >>    0 LOAD_GLOBAL              0 (get_native_cuda_compute_capabilities)
 1010           2 LOAD_FAST                0 (environ_cp)
 1009           4 CALL_FUNCTION            1
@@ -2625,7 +2631,7 @@ Disassembly of <code object set_tf_cuda_compute_capabilities at 0x00000280E165CF
              270 POP_TOP
              272 LOAD_CONST              20 (None)
              274 RETURN_VALUE
-Disassembly of <code object set_other_cuda_vars at 0x00000280E1661030, file "<dis>", line 1077>:
+Disassembly of <code object set_other_cuda_vars at 0x000001857DB93500, file "<dis>", line 1077>:
 1080           0 LOAD_FAST                0 (environ_cp)
                2 LOAD_METHOD              0 (get)
                4 LOAD_CONST               1 ('TF_CUDA_CLANG')
@@ -2644,7 +2650,7 @@ Disassembly of <code object set_other_cuda_vars at 0x00000280E1661030, file "<di
               30 POP_TOP
          >>   32 LOAD_CONST               5 (None)
               34 RETURN_VALUE
-Disassembly of <code object set_host_cxx_compiler at 0x00000280E16610E0, file "<dis>", line 1086>:
+Disassembly of <code object set_host_cxx_compiler at 0x000001857DB935B0, file "<dis>", line 1086>:
 1088           0 LOAD_GLOBAL              0 (which)
                2 LOAD_CONST               1 ('g++')
                4 CALL_FUNCTION            1
@@ -2670,7 +2676,7 @@ Disassembly of <code object set_host_cxx_compiler at 0x00000280E16610E0, file "<
               44 POP_TOP
               46 LOAD_CONST               7 (None)
               48 RETURN_VALUE
-Disassembly of <code object set_host_c_compiler at 0x00000280E1661190, file "<dis>", line 1103>:
+Disassembly of <code object set_host_c_compiler at 0x000001857DB93660, file "<dis>", line 1103>:
 1105           0 LOAD_GLOBAL              0 (which)
                2 LOAD_CONST               1 ('gcc')
                4 CALL_FUNCTION            1
@@ -2696,7 +2702,7 @@ Disassembly of <code object set_host_c_compiler at 0x00000280E1661190, file "<di
               44 POP_TOP
               46 LOAD_CONST               7 (None)
               48 RETURN_VALUE
-Disassembly of <code object system_specific_test_config at 0x00000280E1661240, file "<dis>", line 1120>:
+Disassembly of <code object system_specific_test_config at 0x000001857DB93710, file "<dis>", line 1120>:
 1122           0 LOAD_GLOBAL              0 (write_to_bazelrc)
                2 LOAD_CONST               1 ('test --flaky_test_attempts=3')
                4 CALL_FUNCTION            1
@@ -2842,7 +2848,7 @@ Disassembly of <code object system_specific_test_config at 0x00000280E1661240, f
              284 POP_TOP
              286 LOAD_CONST               8 (None)
              288 RETURN_VALUE
-Disassembly of <code object set_system_libs_flag at 0x00000280E16613A0, file "<dis>", line 1163>:
+Disassembly of <code object set_system_libs_flag at 0x000001857DB93870, file "<dis>", line 1163>:
 1164           0 LOAD_FAST                0 (environ_cp)
                2 LOAD_METHOD              0 (get)
                4 LOAD_CONST               1 ('TF_SYSTEM_LIBS')
@@ -2901,7 +2907,7 @@ Disassembly of <code object set_system_libs_flag at 0x00000280E16613A0, file "<d
              110 JUMP_ABSOLUTE           78
          >>  112 LOAD_CONST               0 (None)
              114 RETURN_VALUE
-Disassembly of <code object set_windows_build_flags at 0x00000280E16612F0, file "<dis>", line 1177>:
+Disassembly of <code object set_windows_build_flags at 0x000001857DB937C0, file "<dis>", line 1177>:
 1183           0 LOAD_GLOBAL              0 (write_to_bazelrc)
 1184           2 LOAD_CONST               1 ('build --copt=/d2ReducedOptimizeHugeFunctions --host_copt=/d2ReducedOptimizeHugeFunctions')
 1183           4 CALL_FUNCTION            1
@@ -2922,7 +2928,7 @@ Disassembly of <code object set_windows_build_flags at 0x00000280E16612F0, file 
               34 POP_TOP
          >>   36 LOAD_CONST               9 (None)
               38 RETURN_VALUE
-Disassembly of <code object config_info_line at 0x00000280E1661450, file "<dis>", line 1201>:
+Disassembly of <code object config_info_line at 0x000001857DB93920, file "<dis>", line 1201>:
 1203           0 LOAD_GLOBAL              0 (print)
                2 LOAD_CONST               1 ('\t--config=%-12s\t# %s')
                4 LOAD_FAST                0 (name)
@@ -2933,7 +2939,7 @@ Disassembly of <code object config_info_line at 0x00000280E1661450, file "<dis>"
               14 POP_TOP
               16 LOAD_CONST               2 (None)
               18 RETURN_VALUE
-Disassembly of <code object configure_ios at 0x00000280E1661660, file "<dis>", line 1206>:
+Disassembly of <code object configure_ios at 0x000001857DB93B30, file "<dis>", line 1206>:
 1208           0 LOAD_GLOBAL              0 (is_macos)
                2 CALL_FUNCTION            0
                4 POP_JUMP_IF_TRUE        10
@@ -2999,8 +3005,8 @@ Disassembly of <code object configure_ios at 0x00000280E1661660, file "<dis>", l
              124 JUMP_ABSOLUTE           84
          >>  126 LOAD_CONST               1 (None)
              128 RETURN_VALUE
-Disassembly of <code object validate_cuda_config at 0x00000280E16617C0, file "<dis>", line 1222>:
-1225           0 LOAD_CONST               1 (<code object maybe_encode_env at 0x00000280E1661500, file "<dis>", line 1225>)
+Disassembly of <code object validate_cuda_config at 0x000001857DB93C90, file "<dis>", line 1222>:
+1225           0 LOAD_CONST               1 (<code object maybe_encode_env at 0x000001857DB939D0, file "<dis>", line 1225>)
                2 LOAD_CONST               2 ('validate_cuda_config.<locals>.maybe_encode_env')
                4 MAKE_FUNCTION            0
                6 STORE_FAST               1 (maybe_encode_env)
@@ -3078,7 +3084,7 @@ Disassembly of <code object validate_cuda_config at 0x00000280E16617C0, file "<d
 1256         150 LOAD_CONST               6 (False)
              152 RETURN_VALUE
 1258     >>  154 LOAD_GLOBAL             11 (dict)
-             156 LOAD_CONST              19 (<code object <genexpr> at 0x00000280E1661710, file "<dis>", line 1258>)
+             156 LOAD_CONST              19 (<code object <genexpr> at 0x000001857DB93BE0, file "<dis>", line 1258>)
              158 LOAD_CONST              20 ('validate_cuda_config.<locals>.<genexpr>')
              160 MAKE_FUNCTION            0
 1259         162 LOAD_FAST                4 (proc)
@@ -3207,7 +3213,7 @@ Disassembly of <code object validate_cuda_config at 0x00000280E16617C0, file "<d
              408 STORE_SUBSCR
 1282         410 LOAD_CONST              12 (True)
              412 RETURN_VALUE
-Disassembly of <code object maybe_encode_env at 0x00000280E1661500, file "<dis>", line 1225>:
+Disassembly of <code object maybe_encode_env at 0x000001857DB939D0, file "<dis>", line 1225>:
 1227           0 LOAD_GLOBAL              0 (is_windows)
                2 CALL_FUNCTION            0
                4 POP_JUMP_IF_FALSE       20
@@ -3255,7 +3261,7 @@ Disassembly of <code object maybe_encode_env at 0x00000280E1661500, file "<dis>"
               88 JUMP_ABSOLUTE           32
 1235     >>   90 LOAD_FAST                0 (env)
               92 RETURN_VALUE
-Disassembly of <code object <genexpr> at 0x00000280E1661710, file "<dis>", line 1258>:
+Disassembly of <code object <genexpr> at 0x000001857DB93BE0, file "<dis>", line 1258>:
 1258           0 LOAD_FAST                0 (.0)
          >>    2 FOR_ITER                30 (to 34)
 1259           4 STORE_FAST               1 (line)
@@ -3275,7 +3281,7 @@ Disassembly of <code object <genexpr> at 0x00000280E1661710, file "<dis>", line 
               32 JUMP_ABSOLUTE            2
          >>   34 LOAD_CONST               2 (None)
               36 RETURN_VALUE
-Disassembly of <code object main at 0x00000280E1661870, file "<dis>", line 1285>:
+Disassembly of <code object main at 0x000001857DB93D40, file "<dis>", line 1285>:
 1290           0 LOAD_GLOBAL              0 (argparse)
                2 LOAD_METHOD              1 (ArgumentParser)
                4 CALL_METHOD              0

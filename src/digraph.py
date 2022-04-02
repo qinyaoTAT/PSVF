@@ -4,6 +4,7 @@ import graphviz
 class Digraph:
     def __init__(self):
         self.graph = {}
+        self.lineno = 0
 
     def add_vertex(self, value):
         if not value:
@@ -29,5 +30,14 @@ class Digraph:
     def add_mul_vertex_edge(self, *args, **kwargs):
         pass
 
-    def write(self):
-        pass
+    def write(self, fmt='pdf', module_name='psvf'):
+        dot = graphviz.Digraph(module_name, comment=module_name, node_attr={'color': 'lightblue2', 'style': 'filled'})
+        dot.format = fmt
+        for i in self.graph:
+            if self.graph[i]:
+                dot.node(i)
+                for j in self.graph[i]:
+                    dot.edge(j, i)
+        dot.render(directory='output').replace('\\', '/')
+
+

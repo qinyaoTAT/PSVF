@@ -3,8 +3,10 @@ import os
 from argparse import ArgumentParser
 
 def arg_parser():
-    arg = ArgumentParser(description="PSVF")
+    arg = ArgumentParser(description="Python Static Value-Flow Analysis Framework")
+    arg.add_argument("-s", '--scan_path', dest='scan_path', help="specify the scan directory.", default='')
     arg.add_argument("-o", '--output', dest='output', help="specify the output directory.", default='.')
+    arg.add_argument("-p", '--pdf', dest='pdf', help="generate PDF graph.", default=False)
     arg.add_argument("-v", '--version', help="show version.")
     return arg.parse_args()
 
@@ -12,6 +14,13 @@ def arg_parser():
 def get_file_list(path):
     file_list = []
     module_set = set()
+    if os.path.isfile(path):
+        path = os.path.realpath(path)
+        file_list.append(path)
+        module_name = os.path.basename(path)
+        module_name = module_name.replace('.py', '')
+        module_set.add(module_name)
+        return file_list, module_set
     for root, dirs, files in os.walk(path, topdown=True):
         for name in files:
             if name.endswith('.py'):

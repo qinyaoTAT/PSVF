@@ -5,7 +5,9 @@ class Utils:
         self.insts_stack = []
         self.current_func_name = ''
         self.last_call_name = ''
+        self.current_lineno = 0
         self.current_build_set = set()
+        self.current_operand_set = set()
 
     def push(self, inst):
         self.insts_stack.append(inst)

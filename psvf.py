@@ -10,19 +10,11 @@ from src import process
 from src import pre_process
 
 logging.basicConfig(format="%(asctime)s|%(levelname)s|%(filename)s:%(lineno)s|%(message)s", level=logging.INFO)
-if platform.system() == 'Darwin':
-    source_path = '/Users/qinyao/tools/python/tensorflow-master'
-elif platform.system() == 'Windows':
-    source_path = 'test'
 VERSION = '1.0.0'
 
 
 class PSVF:
-    def __init__(self, path):
-        self.path = path
-        file_list, module_set = pre_process.get_file_list(self.path)
-        self.file_list = file_list
-        self.module_set = module_set
+    def __init__(self):
         self.process = process.Process()
 
     def get_top_insts(self, file):
@@ -61,22 +53,26 @@ class PSVF:
     def run(self):
         args = pre_process.arg_parser()
         output = args.output
+        scan_path = args.scan_path
+        if not os.path.exists(scan_path):
+            logging.error('please specify the correct scan path!!!')
+            exit(-1)
         if not os.path.exists(output):
             logging.error('please specify the correct output directory!!!')
             exit(-1)
-        if os.path.isdir(output):
-            output = os.path.join(output, 'out.png')
 
-        for file in self.file_list:
-            module_name = file.replace(self.path, '')[1:-3]
+        file_list, module_set = pre_process.get_file_list(scan_path)
+        for file in file_list:
+            module_name = file.replace(scan_path, '')[1:-3]
             module_name = module_name.replace(os.sep, '.')
             self.get_top_insts(file)
+            self.process.digraph.write(module_name=module_name)
 
             break
 
 
 if __name__ == '__main__':
-    psvf = PSVF(source_path)
+    psvf = PSVF()
     psvf.run()
 
 
