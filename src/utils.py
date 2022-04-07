@@ -8,6 +8,7 @@ class Utils:
         self.current_lineno = 0
         self.current_build_set = set()
         self.current_operand_set = set()
+        self.last_binary_subscr = ''
 
     def push(self, inst):
         self.insts_stack.append(inst)
