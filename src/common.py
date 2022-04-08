@@ -36,4 +36,7 @@ BUILD_IN_STR_METHOD = ['capitalize', 'casefold', 'center', 'count', 'encode', 'e
                        'removeprefix', 'removesuffix', 'replace', 'rfind', 'rindex', 'rjust', 'rpartition', 'rsplit', 'rstrip',
                        'split', 'splitlines', 'startswith', 'strip', 'swapcase', 'title', 'translate', 'upper', 'zfill']
 
+BUILD_IN_DICT_METHOD = ['get', 'items', 'keys', 'pop', 'popitem', 'reversed', 'setdefault', 'update', 'values']
+
+BUILD_IN_PASS_METHOD = ['append', 'update']
 

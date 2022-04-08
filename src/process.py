@@ -3,7 +3,7 @@ import logging
 
 from src.utils import Utils
 from src.digraph import Digraph
-from src.common import BUILD_IN_FUNC, BUILD_IN_STR_METHOD
+from src.common import BUILD_IN_FUNC, BUILD_IN_STR_METHOD, BUILD_IN_DICT_METHOD, BUILD_IN_PASS_METHOD
 
 class Process:
     def __init__(self):
@@ -162,9 +162,12 @@ class Process:
                         self.utils.push(inst_global)
                     func_name = 'str.' + inst_method_name.argval
                     self.digraph.add_edge(func_name + '#0', func_name + '#-1')
+                elif inst_method_name.argval in BUILD_IN_DICT_METHOD:
+                    self.utils.push(inst_global)
+                    return
                 elif inst_method_name.argval in ['read', 'write']:
                     func_name = inst_method_name.argval
-                elif inst_method_name.argval in ['append', 'get']:
+                elif inst_method_name.argval in BUILD_IN_PASS_METHOD:
                     if args_list:
                         vertex_in = inst_global.argval
                         if args_list[0].opname == 'LOAD_FAST' or args_list[0].opname == 'LOAD_NAME':
