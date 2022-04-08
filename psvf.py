@@ -8,6 +8,8 @@ import platform
 
 from src import process
 from src import pre_process
+from src import rules
+from src import analyzer
 
 logging.basicConfig(format="%(asctime)s|%(levelname)s|%(filename)s:%(lineno)s|%(message)s", level=logging.INFO)
 VERSION = '1.0.0'
@@ -67,6 +69,8 @@ class PSVF:
             module_name = module_name.replace(os.sep, '.')
             self.get_top_insts(file)
             self.process.digraph.write(module_name=module_name)
+            load_rule = rules.Rules(os.path.join('rules', 'rules.json'))
+            load_rule.get_rules()
 
             break
 

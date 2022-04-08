@@ -63,7 +63,7 @@
       "cwe": ""
     }
   },
-  "transfer": {
+  "passthrough": {
     "p3000": {
 
     },
