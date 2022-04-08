@@ -35,8 +35,8 @@ class Digraph:
             self.graph[vertex_out] = []
             self.graph_record[vertex_out] = set()
             self.graph_record[vertex_in].add(self.lineno)
-        if vertex_out not in self.graph[vertex_in]:
-            self.graph[vertex_in].append(vertex_out)
+        if vertex_in not in self.graph[vertex_out]:
+            self.graph[vertex_out].append(vertex_in)
 
     def add_mul_vertex_edge(self, *args, **kwargs):
         pass
@@ -55,7 +55,7 @@ class Digraph:
                 else:
                     dot.node(i)
                 for j in self.graph[i]:
-                    dot.edge(j, i)
+                    dot.edge(i, j)
         dot.render(directory='output').replace('\\', '/')
 
 
