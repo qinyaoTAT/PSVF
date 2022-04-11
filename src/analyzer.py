@@ -24,19 +24,14 @@ class DFS:
 
     def analyze(self):
         for vertex in self.start_vertex:
-            self.bfs(vertex)
+            self.dfs(vertex)
 
-    def bfs(self, vertex):
-        que = queue.Queue()
-        que.put(vertex)
-        self.visited_vertex = set()
-        while not que.empty():
-            v = que.get()
-            print(v)
-            for i in self.graph[v]:
-                if i not in self.visited_vertex:
-                    self.visited_vertex.add(i)
-                    que.put(i)
+    def dfs(self, vertex):
+        for i in self.graph[vertex]:
+            if i not in self.visited_vertex:
+                self.visited_vertex.add(i)
+                print(i)
+                self.dfs(i)
 
 
 
