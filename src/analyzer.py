@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
 import json
 import queue
+import os
 
 from src import rules
 
@@ -12,8 +13,11 @@ class DFS:
         self.errors = []
         self.visited_vertex = set()
         self.get_start_vertex()
+        self.load_rules = rules.Rules(os.path.join('rules', 'rules.json'))
+        self.load_rules.get_rules()
 
     def get_start_vertex(self):
+        # 获取所有起始顶点
         self.start_vertex = set(self.graph.keys())
         sub_vertext_set = set()
         for vertex in self.graph:

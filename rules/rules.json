@@ -5,9 +5,11 @@
         "sys.argv",
         "open#-1",
         "read#-1",
-        "os.environ"
+        "os.environ",
+        "input#-1",
+        "raw_input#-1"
       ],
-      "message": "来源于外部不可信输入"
+      "message": "Untrusted input"
     },
     "p1001": {
     }
@@ -49,7 +51,7 @@
         "subprocess.check_call",
         "subprocess.check_output"
       ],
-      "message": "命令注入",
+      "message": "command injection",
       "level": 3,
       "cwe": ""
     },
@@ -58,17 +60,17 @@
         "exec",
         "eval"
       ],
-      "message": "代码注入",
+      "message": "code injection",
       "level": 3,
       "cwe": ""
     }
   },
-  "passthrough": {
+  "transfer": {
     "p3000": {
-
-    },
-    "p3001": {
-
+      "function": [
+        "os.path.abspath"
+      ],
+      "message": "taint transfer function"
     }
   },
   "clean": {
@@ -77,7 +79,7 @@
         "clean",
         "os.path.realpath"
       ],
-      "message": "经过该函数的污点清理为非污点"
+      "message": "taint cleanup function"
     }
   }
 }

@@ -7,7 +7,7 @@ class Rules:
         self.path = path
         self.source = {}
         self.sink = {}
-        self.passthrough = {}
+        self.transfer = {}
         self.clean = {}
 
     def get_rules(self):
@@ -18,8 +18,8 @@ class Rules:
                     self.source = rules[i]
                 elif i == 'sink':
                     self.sink = rules[i]
-                elif i == 'passthrough':
-                    self.passthrough = rules[i]
+                elif i == 'transfer':
+                    self.transfer = rules[i]
                 elif i == 'clean':
                     self.clean = rules[i]
 

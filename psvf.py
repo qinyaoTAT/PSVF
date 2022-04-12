@@ -70,9 +70,6 @@ class PSVF:
             self.get_top_insts(file)
             self.process.digraph.write(module_name=module_name)
 
-            load_rules = rules.Rules(os.path.join('rules', 'rules.json'))
-            load_rules.get_rules()
-
             analyze = analyzer.DFS(self.process.digraph.graph)
             analyze.analyze()
 
