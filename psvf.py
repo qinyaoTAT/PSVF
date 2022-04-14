@@ -11,7 +11,7 @@ from src import pre_process
 from src import rules
 from src import analyzer
 
-logging.basicConfig(format="%(asctime)s|%(levelname)s|%(filename)s:%(lineno)s|%(message)s", level=logging.INFO)
+logging.basicConfig(format="%(asctime)s | %(levelname)s | %(filename)s:%(lineno)s | %(message)s", level=logging.INFO)
 VERSION = '1.0.0'
 
 
@@ -72,7 +72,9 @@ class PSVF:
 
             analyze = analyzer.DFS(self.process.digraph.graph)
             analyze.analyze()
-
+            if os.path.isdir(output):
+                output = os.path.join(output, module_name + '.json')
+            analyze.report(output)
             break
 
 

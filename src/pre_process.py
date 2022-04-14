@@ -5,7 +5,7 @@ from argparse import ArgumentParser
 def arg_parser():
     arg = ArgumentParser(description="Python Static Value-Flow Analysis Framework")
     arg.add_argument("-s", '--scan_path', dest='scan_path', help="specify the scan directory.", default='')
-    arg.add_argument("-o", '--output', dest='output', help="specify the output directory.", default='.')
+    arg.add_argument("-o", '--output', dest='output', help="specify the output directory.", default='output')
     arg.add_argument("-p", '--pdf', dest='pdf', help="generate PDF graph.", default=False)
     arg.add_argument("-v", '--version', help="show version.")
     return arg.parse_args()

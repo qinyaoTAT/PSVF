@@ -9,7 +9,7 @@
         "input#-1",
         "raw_input#-1"
       ],
-      "message": "Untrusted input"
+      "name": "Untrusted input"
     },
     "p1001": {
     }
@@ -44,14 +44,14 @@
         "popen2.popen4",
         "popen2.Popen3",
         "popen2.Popen4",
-        "commands.getoutput",
-        "commands.getstatusoutput",
-        "subprocess.Popen",
-        "subprocess.call",
-        "subprocess.check_call",
-        "subprocess.check_output"
+        "commands.getoutput#0",
+        "commands.getstatusoutput#0",
+        "subprocess.Popen#0",
+        "subprocess.call#0",
+        "subprocess.check_call#0",
+        "subprocess.check_output#0"
       ],
-      "message": "command injection",
+      "name": "command injection",
       "level": 3,
       "cwe": ""
     },
@@ -60,7 +60,7 @@
         "exec",
         "eval"
       ],
-      "message": "code injection",
+      "name": "code injection",
       "level": 3,
       "cwe": ""
     }
