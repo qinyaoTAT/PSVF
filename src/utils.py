@@ -4,6 +4,7 @@ class Utils:
     def __init__(self):
         self.insts_stack = []
         self.current_func_name = ''
+        self.current_module_name = ''
         self.last_call_name = ''
         self.current_lineno = 0
         self.current_build_set = set()

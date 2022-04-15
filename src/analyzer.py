@@ -99,9 +99,10 @@ class DFS:
         if self.errors:
             logging.warning('Found ' + str(len(self.errors)) + ' Errors!!!')
             out_data = {
-                'errors':[]
+                'errors': []
             }
             for error in self.errors:
+                logging.warning('Found source(' + str(error[0]) + ') to sink(' + str(error[-1]) + ')')
                 error_detail = {}
                 error_detail['transfer'] = []
                 for index, data in enumerate(error):
@@ -123,7 +124,7 @@ class DFS:
                 out_data['errors'].append(error_detail)
             with open(output, 'w', encoding='utf-8') as f:
                 f.write(json.dumps(out_data, indent=2, ensure_ascii=False, sort_keys=True))
-                logging.warning('Write File: ' + output)
+                logging.info('Write File: ' + output)
         else:
             logging.warning('Not Found Errors!!!')
 

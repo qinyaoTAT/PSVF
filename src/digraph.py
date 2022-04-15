@@ -45,8 +45,8 @@ class Digraph:
         node_name, lineno = value.split('##')
         return node_name, lineno
 
-    def write(self, fmt='pdf', module_name='psvf'):
-        dot = graphviz.Digraph(module_name, comment=module_name, node_attr={'color': 'lightblue2', 'style': 'filled'})
+    def write(self, fmt='pdf', project_name='psvf'):
+        dot = graphviz.Digraph(project_name, comment='generate project value flow graph.', node_attr={'color': 'lightblue2', 'style': 'filled'})
         dot.format = fmt
         for i in self.graph:
             if self.graph[i]:
