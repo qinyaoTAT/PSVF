@@ -2,11 +2,17 @@
 
 Python Static Value-Flow Analysis Framework
 
+Advantage:
+- Based on Value-Flow graph
+- Supports data flow across files
+- Pure python implementation
+- Unbelievably fast (18w lines / 1 minute)
+
 ## Overview
 
-PSVF is a tool designed to find common security issues in Python code. Based on python bytecode, builds Value-Flow graph, and analyze graph.
+PSVF is a tool designed to find vulnerability in Python code. Based on Value-Flow graph, and analyze it.
 
-example:
+Example graph:
 
 ![img.png](doc/example_graph.png)
 
@@ -29,8 +35,3 @@ optional arguments:
 
 
 ```
-
-## TODO
- - 装饰器值流图构建
- - 类继承值流图构建
- - 跨文件值流图构建

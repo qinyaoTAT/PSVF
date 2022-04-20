@@ -10,6 +10,7 @@ class Utils:
         self.current_build_set = set()
         self.current_operand_set = set()
         self.last_binary_subscr = ''
+        self.current_import_module = dict()
 
     def push(self, inst):
         self.insts_stack.append(inst)

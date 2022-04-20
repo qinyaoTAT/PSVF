@@ -12,6 +12,11 @@ class Process:
         self.utils = Utils()
         self.digraph = Digraph()
 
+    def get_whole_name(self, name):
+        if self.utils.current_module_name:
+            return self.utils.current_module_name + '.' + name
+        return name
+
     def process_top_insts(self, file):
         top_level_insts = []
         with codecs.open(file, 'r', encoding='UTF-8', errors='strict') as fp:
@@ -21,6 +26,7 @@ class Process:
             for inst in code_obj:
                 top_level_insts.append(inst)
             co_consts = code_obj.codeobj.co_consts
+        self.utils.current_import_module = dict()
         self.process_insts(top_level_insts)
         self.utils.clean()
         self.process_sub_body_insts(co_consts, type(code_obj.codeobj))
@@ -33,7 +39,7 @@ class Process:
                 func_or_class_name = sub_codeobj.co_name
                 co_varnames = sub_codeobj.co_varnames
                 co_argcount = sub_codeobj.co_argcount
-                self.utils.current_func_name = func_or_class_name
+                self.utils.current_func_name = self.get_whole_name(func_or_class_name)
                 if co_argcount > 0:
                     args_list = co_varnames[:co_argcount]
                     self.process_declaration_args(args_list)
@@ -80,8 +86,10 @@ class Process:
             return
         inst_store = self.utils.pop()
         value_lhs = inst_store.argval
-        value_rhs = self.process_rhs()
-        if value_rhs == 'MAKE_FUNCTION':
+        value_rhs = self.process_rhs(value_lhs=value_lhs)
+        if not value_rhs:
+            return
+        elif value_rhs == 'MAKE_FUNCTION':
             self.digraph.add_vertex(value_lhs + '#-1')
         elif isinstance(value_rhs, str):
             self.digraph.add_edge(value_rhs, value_lhs)
@@ -132,8 +140,18 @@ class Process:
     def process_store_attr(self, inst):
         pass
 
-    def process_import(self, inst):
-        pass
+    def process_import(self, inst, value_lhs):
+        if 'IMPORT_' not in inst.opname:
+            return
+        import_name = ''
+        if 'IMPORT_NAME' == inst.opname:
+            import_name = inst.argval
+        elif 'IMPORT_FROM' == inst.opname:
+            import_name = inst.argval
+            inst_name = self.utils.pop()
+            if 'IMPORT_NAME' == inst_name.opname:
+                import_name = inst_name.argval + '.' + import_name
+        self.utils.current_import_module[value_lhs] = import_name
 
     def process_binary(self, inst):
         if 'BINARY_' not in inst.opname:
@@ -142,6 +160,12 @@ class Process:
             binary_inst = self.utils.pop()
             index_inst = self.utils.pop()
             return
+
+    def process_load_name(self, value):
+        if value in self.utils.current_import_module:
+            return self.utils.current_import_module[value]
+        else:
+            return value
 
     def process_build(self, inst):
         if 'BUILD_SLICE' in inst.opname:
@@ -188,6 +212,9 @@ class Process:
                         func_name = inst_global.argval + '.' + attr_name
                     elif inst_global.opname == 'LOAD_CONST':
                         func_name = attr_name
+                    elif inst_global.opname == 'LOAD_NAME':
+                        value_name = self.process_load_name(inst_global.argval)
+                        func_name = value_name + '.' + attr_name
 
             elif 'CALL_METHOD' in inst.opname:
                 inst_method_name = self.utils.pop()
@@ -213,6 +240,9 @@ class Process:
                     func_name = inst_global.argval + '.' + inst_method_name.argval
                 elif inst_global.opname == 'LOAD_CONST':
                     func_name = inst_method_name.argval
+                elif inst_global.opname == 'LOAD_NAME':
+                    value = self.process_load_name(inst_global.argval)
+                    func_name = value + '.' + inst_method_name.argval
                 elif 'CALL_' in inst_global.opname:
                     func_name = self.utils.last_call_name + '.' + inst_method_name.argval
                 elif inst_global.opname == 'LOAD_ATTR':
@@ -222,6 +252,9 @@ class Process:
                         func_name = inst_global.argval + '.' + attr_name
                     elif inst_global.opname == 'LOAD_CONST':
                         func_name = attr_name
+                    elif inst_global.opname == 'LOAD_NAME':
+                        value = self.process_load_name(inst_global.argval)
+                        func_name = value + '.' + attr_name
                 else:
                     func_name = inst_method_name.argval
 
@@ -236,14 +269,23 @@ class Process:
                     vertex_in = func_name + '#' + str(index)
                     for i in inst:
                         self.digraph.add_edge(i, vertex_in)
-                elif 'LOAD_FAST' == inst.opname or 'LOAD_NAME' == inst.opname:
+                elif 'LOAD_FAST' == inst.opname:
                     vertex_in = func_name + '#' + str(index)
                     vertex_out = inst.argval
                     if self.utils.current_func_name:
                         vertex_out = '(' + self.utils.current_func_name + ')' + vertex_out
                     self.digraph.add_edge(vertex_out, vertex_in)
+                elif 'LOAD_NAME' == inst.opname:
+                    vertex_in = func_name + '#' + str(index)
+                    vertex_out = self.process_load_name(inst.argval)
+                    if self.utils.current_func_name:
+                        vertex_out = '(' + self.utils.current_func_name + ')' + vertex_out
+                    self.digraph.add_edge(vertex_out, vertex_in)
                 elif 'LOAD_ATTR' == inst.opname:
-                    vertex_out = args_list[index - 1].argval + '.' + inst.argval
+                    if 'CALL_' in args_list[index - 1].opname:
+                        vertex_out = self.utils.last_call_name + '.' + inst.argval
+                    else:
+                        vertex_out = args_list[index - 1].argval + '.' + inst.argval
                     if self.utils.current_func_name:
                         vertex_out = '(' + self.utils.current_func_name + ')' + vertex_out
                     vertex_in = func_name + '#' + str(index - 1)
@@ -330,14 +372,13 @@ class Process:
                 value_arg = '(' + self.utils.current_func_name + ')' + value
             self.digraph.add_edge(self.utils.current_func_name + '#' + str(index), value_arg)
 
-
-    def process_rhs(self):
+    def process_rhs(self, value_lhs=''):
         inst_rhs = self.utils.pop()
         value_rhs = ''
         if 'LOAD_CONST' in inst_rhs.opname:
             pass
         elif 'LOAD_NAME' in inst_rhs.opname:
-            value_rhs = inst_rhs.argval
+            value_rhs = self.process_load_name(inst_rhs.argval)
         elif 'LOAD_FAST' in inst_rhs.opname:
             value_rhs = inst_rhs.argval
             if self.utils.current_func_name:
@@ -351,8 +392,9 @@ class Process:
                 value_rhs = inst_global.argval + '.' + attr_value
             if self.utils.current_func_name:
                 value_rhs = '(' + self.utils.current_func_name + ')' + value_rhs
-        elif inst_rhs.opname == 'IMPORT_NAME' or inst_rhs.opname == 'IMPORT_FROM':
-            pass
+        elif 'IMPORT_' in inst_rhs.opname:
+            self.process_import(inst_rhs, value_lhs)
+            return
         elif 'BUILD_' in inst_rhs.opname:
             if 'BUILD_SLICE' in inst_rhs.opname:
                 return ''

@@ -31,8 +31,6 @@ class DFS:
         for vertex in self.start_vertex:
             visited_vertex = set()
             visited_vertex.add(vertex)
-            if 'os.environ' in vertex:
-                print()
             self.dfs(vertex, visited_vertex)
 
     def dfs(self, vertex, visited_vertex):
@@ -49,7 +47,8 @@ class DFS:
             self.trace.append(vertex)
             # find one path(source -> sink)
             tmp = copy.deepcopy(self.trace)
-            self.errors.append(tmp)
+            if tmp not in self.errors:
+                self.errors.append(tmp)
             self.trace.pop()
             return
 
@@ -67,37 +66,45 @@ class DFS:
 
     def is_source(self, vertex):
         source_dict = self.load_rules.source
+        vertex_name = vertex
+        if ')' in vertex:
+            vertex_name = vertex.split(')')[-1]
         for rule_name in source_dict:
             if 'function' in source_dict[rule_name]:
                 functions = source_dict[rule_name]['function']
                 for i in functions:
-                    if i in vertex:
+                    if i == vertex_name:
                         return True
         return False
 
     def is_sink(self, vertex):
         sink_dict = self.load_rules.sink
+        vertex_name = vertex
+        if ')' in vertex:
+            vertex_name = vertex.split(')')[-1]
         for rule_name in sink_dict:
             if 'function' in sink_dict[rule_name]:
                 functions = sink_dict[rule_name]['function']
                 for i in functions:
-                    if i in vertex:
+                    if i == vertex_name:
                         return True
         return False
 
     def is_clean(self, vertex):
         clean_dict = self.load_rules.clean
+        vertex_name = vertex
+        if ')' in vertex:
+            vertex_name = vertex.split(')')[-1]
         for rule_name in clean_dict:
             if 'function' in clean_dict[rule_name]:
                 functions = clean_dict[rule_name]['function']
                 for i in functions:
-                    if i in vertex:
+                    if i == vertex_name:
                         return True
         return False
 
     def report(self, output):
         if self.errors:
-            logging.warning('Found ' + str(len(self.errors)) + ' Errors!!!')
             out_data = {
                 'errors': []
             }
@@ -122,6 +129,7 @@ class DFS:
                             'lineno': ''
                         })
                 out_data['errors'].append(error_detail)
+            logging.warning('Found ' + str(len(self.errors)) + ' Errors!!!')
             with open(output, 'w', encoding='utf-8') as f:
                 f.write(json.dumps(out_data, indent=2, ensure_ascii=False, sort_keys=True))
                 logging.info('Write File: ' + output)

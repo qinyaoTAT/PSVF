@@ -1,5 +1,6 @@
 # -*- coding:utf-8 -*-
 import graphviz
+import logging
 
 
 class Digraph:
@@ -27,6 +28,8 @@ class Digraph:
     def add_edge(self, vertex_out, vertex_in):
         if not vertex_out or not vertex_in:
             return
+        if ':' in vertex_out or ':' in vertex_in:
+            return
         if vertex_in not in self.graph:
             self.graph[vertex_in] = []
             self.graph_record[vertex_in] = set()
@@ -45,9 +48,9 @@ class Digraph:
         node_name, lineno = value.split('##')
         return node_name, lineno
 
-    def write(self, fmt='pdf', project_name='psvf'):
+    def generate(self, output, project_name='psvf'):
         dot = graphviz.Digraph(project_name, comment='generate project value flow graph.', node_attr={'color': 'lightblue2', 'style': 'filled'})
-        dot.format = fmt
+        dot.format = 'pdf'
         for i in self.graph:
             if self.graph[i]:
                 if self.graph_record[i]:
@@ -55,7 +58,8 @@ class Digraph:
                 else:
                     dot.node(i)
                 for j in self.graph[i]:
-                    dot.edge(i, j)
-        dot.render(directory='output').replace('\\', '/')
+                    dot.edge(str(i), str(j))
+        logging.info('start write visualization file...')
+        dot.render(directory=output).replace('\\', '/')
 
 
