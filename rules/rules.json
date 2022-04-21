@@ -34,7 +34,7 @@
         "os.spawnvp",
         "os.spawnvpe",
         "os.startfile",
-        "os.system",
+        "os.system#0",
         "os.popen",
         "os.popen2",
         "os.popen3",
@@ -57,8 +57,8 @@
     },
     "p2001": {
       "function": [
-        "exec",
-        "eval"
+        "exec#0",
+        "eval#0"
       ],
       "name": "code injection",
       "level": 3,

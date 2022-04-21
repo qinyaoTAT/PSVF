@@ -21,7 +21,7 @@ class Process:
         top_level_insts = []
         with codecs.open(file, 'r', encoding='UTF-8', errors='strict') as fp:
             src_code = fp.read()
-            # dis.dis(src_code)
+            dis.dis(src_code)
             code_obj = dis.Bytecode(src_code)
             for inst in code_obj:
                 top_level_insts.append(inst)
@@ -59,10 +59,13 @@ class Process:
                 if inst.starts_line:
                     self.utils.current_lineno = inst.starts_line
                     self.digraph.lineno = inst.starts_line
-                    if inst.starts_line == 1303:
-                        print()
+                    # if inst.starts_line == 1303:
+                    #     print()
+
                 self.utils.push(inst)
 
+                self.process_rot(inst)
+                self.process_unpack(inst)
                 self.process_store(inst)
                 self.process_call(inst)
                 self.process_build(inst)
@@ -72,6 +75,24 @@ class Process:
 
             except Exception as exception:
                 logging.warning(inst.opname + ' : ' + str(self.utils.current_lineno) + ':' + str(exception))
+
+    def process_rot(self, inst):
+        if 'ROT_' not in inst.opname:
+            return
+        rot_inst = self.utils.pop()
+        count = 0
+        if inst.opname == 'ROT_TWO':
+            count = 2
+            last_inst = self.utils.pop()
+            if last_inst.opname == 'ROT_THREE':
+                self.utils.push(last_inst)
+                return
+        elif inst.opname == 'ROT_THREE':
+            count = 3
+        for i in range(count):
+            value_rhs = self.process_rhs()
+            self.utils.rot_value.append(value_rhs)
+        self.utils.push(rot_inst)
 
     def process_store(self, inst):
         self.process_store_name(inst)
@@ -97,14 +118,13 @@ class Process:
             for i in value_rhs:
                 self.digraph.add_edge(i, value_lhs)
 
-
     def process_store_fast(self, inst):
         if 'STORE_FAST' != inst.opname:
             return
         inst_store = self.utils.pop()
         value_lhs = inst_store.argval
         if self.utils.current_func_name:
-            value_lhs = '(' + self.utils.current_func_name + ')' + value_lhs
+            value_lhs = self.utils.current_func_name + '.' + value_lhs
         self.digraph.add_vertex(value_lhs)
         value_rhs = self.process_rhs()
         if isinstance(value_rhs, str):
@@ -127,7 +147,7 @@ class Process:
         value_lhs_inst = self.utils.pop()
         value_lhs = value_lhs_inst.argval
         if self.utils.current_func_name:
-            value_lhs = '(' + self.utils.current_func_name + ')' + value_lhs
+            value_lhs = self.utils.current_func_name + '.' + value_lhs
         self.digraph.add_vertex(value_lhs)
         value_rhs = self.process_rhs()
         if isinstance(value_rhs, str):
@@ -139,6 +159,22 @@ class Process:
 
     def process_store_attr(self, inst):
         pass
+
+    def process_unpack(self, inst):
+        '''
+        :param inst: 当前指令
+        :return: 无
+        '''
+        if 'UNPACK_SEQUENCE' != inst.opname:
+            return
+        unpack_inst = self.utils.pop()
+        last_inst = self.utils.pop()
+        if 'CALL_' in last_inst.opname:
+            last_call_name = self.utils.called_name.pop()
+            count = inst.argval
+            for i in range(count):
+                self.utils.push(last_inst)
+                self.utils.called_name.append(last_call_name)
 
     def process_import(self, inst, value_lhs):
         if 'IMPORT_' not in inst.opname:
@@ -156,10 +192,17 @@ class Process:
     def process_binary(self, inst):
         if 'BINARY_' not in inst.opname:
             return
-        if 'BINARY_SUBSCR' not in inst.opname:
-            binary_inst = self.utils.pop()
+        binary_inst = self.utils.pop()
+        if 'BINARY_SUBSCR' in inst.opname:
             index_inst = self.utils.pop()
             return
+        elif 'BINARY_ADD' in inst.opname:
+            for i in range(2):
+                value = self.process_rhs()
+                if isinstance(value, str):
+                    self.utils.current_operand_set.add(value)
+                elif isinstance(value, set):
+                    self.utils.current_operand_set |= value
 
     def process_load_name(self, value):
         if value in self.utils.current_import_module:
@@ -204,7 +247,7 @@ class Process:
             if 'CALL_FUNCTION' in inst.opname:
                 inst_func_name = self.utils.pop()
                 if inst_func_name.opname == 'LOAD_GLOBAL':
-                    func_name = inst_func_name.argval
+                    func_name = self.utils.current_module_name + '.' + inst_func_name.argval
                 elif inst_func_name.opname == 'LOAD_ATTR':
                     attr_name = inst_func_name.argval
                     inst_global = self.utils.pop()
@@ -244,7 +287,8 @@ class Process:
                     value = self.process_load_name(inst_global.argval)
                     func_name = value + '.' + inst_method_name.argval
                 elif 'CALL_' in inst_global.opname:
-                    func_name = self.utils.last_call_name + '.' + inst_method_name.argval
+                    last_func_name = self.utils.called_name.pop()
+                    func_name = last_func_name + '.' + inst_method_name.argval
                 elif inst_global.opname == 'LOAD_ATTR':
                     attr_name = inst_global.argval + '.' + inst_method_name.argval
                     inst_global = self.utils.pop()
@@ -273,27 +317,29 @@ class Process:
                     vertex_in = func_name + '#' + str(index)
                     vertex_out = inst.argval
                     if self.utils.current_func_name:
-                        vertex_out = '(' + self.utils.current_func_name + ')' + vertex_out
+                        vertex_out = self.utils.current_func_name + '.' + vertex_out
                     self.digraph.add_edge(vertex_out, vertex_in)
                 elif 'LOAD_NAME' == inst.opname:
                     vertex_in = func_name + '#' + str(index)
                     vertex_out = self.process_load_name(inst.argval)
                     if self.utils.current_func_name:
-                        vertex_out = '(' + self.utils.current_func_name + ')' + vertex_out
+                        vertex_out = self.utils.current_func_name + '.' + vertex_out
                     self.digraph.add_edge(vertex_out, vertex_in)
                 elif 'LOAD_ATTR' == inst.opname:
                     if 'CALL_' in args_list[index - 1].opname:
-                        vertex_out = self.utils.last_call_name + '.' + inst.argval
+                        func_name = self.utils.called_name.pop()
+                        vertex_out = func_name + '.' + inst.argval
                     else:
                         vertex_out = args_list[index - 1].argval + '.' + inst.argval
                     if self.utils.current_func_name:
-                        vertex_out = '(' + self.utils.current_func_name + ')' + vertex_out
+                        vertex_out = self.utils.current_func_name + '.' + vertex_out
                     vertex_in = func_name + '#' + str(index - 1)
                     self.digraph.add_edge(vertex_out, vertex_in)
                 elif 'CALL_' in inst.opname:
                     vertex_in = func_name + '#' + str(index)
-                    if self.utils.last_call_name:
-                        vertex_out = self.utils.last_call_name + '#-1'
+                    if self.utils.called_name:
+                        func_name = self.utils.called_name.pop()
+                        vertex_out = func_name + '#-1'
                         self.digraph.add_edge(vertex_out, vertex_in)
                 elif 'BUILD_' in inst.opname:
                     vertex_in = func_name + '#' + str(index)
@@ -306,7 +352,7 @@ class Process:
                     for vertex_out in elem_set:
                         self.digraph.add_edge(vertex_out, vertex_in)
 
-            self.utils.last_call_name = func_name
+            self.utils.called_name.append(func_name)
             self.utils.push(call_inst)
 
     def process_compare_op(self, inst):
@@ -354,13 +400,8 @@ class Process:
                 args_list.append(inst)
             elif 'BUILD_' in inst.opname:
                 args_list.append(inst)
-            elif 'BINARY_MODULO' in inst.opname:
+            elif 'BINARY_' in inst.opname:
                 args_list.append(self.utils.current_operand_set)
-            elif 'BINARY_SUBSCR' in inst.opname:
-                inst = self.utils.pop()
-                inst = self.utils.pop()
-                inst = self.utils.pop()
-                args_list.append(inst)
         args_list.reverse()
 
         return args_list
@@ -369,7 +410,7 @@ class Process:
         for index, value in enumerate(args_list):
             value_arg = value
             if self.utils.current_func_name:
-                value_arg = '(' + self.utils.current_func_name + ')' + value
+                value_arg = self.utils.current_func_name + '.' + value
             self.digraph.add_edge(self.utils.current_func_name + '#' + str(index), value_arg)
 
     def process_rhs(self, value_lhs=''):
@@ -382,7 +423,7 @@ class Process:
         elif 'LOAD_FAST' in inst_rhs.opname:
             value_rhs = inst_rhs.argval
             if self.utils.current_func_name:
-                value_rhs = '(' + self.utils.current_func_name + ')' + value_rhs
+                value_rhs = self.utils.current_func_name + '.' + value_rhs
         elif 'LOAD_ATTR' in inst_rhs.opname:
             attr_value = inst_rhs.argval
             inst_global = self.utils.pop()
@@ -390,8 +431,7 @@ class Process:
                 value_rhs = inst_global.argval
             elif 'LOAD_GLOBAL' in inst_global.opname:
                 value_rhs = inst_global.argval + '.' + attr_value
-            if self.utils.current_func_name:
-                value_rhs = '(' + self.utils.current_func_name + ')' + value_rhs
+                value_rhs = self.utils.current_module_name + '.' + value_rhs
         elif 'IMPORT_' in inst_rhs.opname:
             self.process_import(inst_rhs, value_lhs)
             return
@@ -399,19 +439,22 @@ class Process:
             if 'BUILD_SLICE' in inst_rhs.opname:
                 return ''
             return self.utils.current_build_set
-        elif 'CALL_FUNCTION' in inst_rhs.opname:
-            value_rhs = self.utils.last_call_name + '#-1'
+        elif 'CALL_' in inst_rhs.opname:
+            func_name = self.utils.called_name.pop()
+            value_rhs = func_name + '#-1'
         elif inst_rhs.opname == 'MAKE_FUNCTION':
             value_rhs = 'MAKE_FUNCTION'
         elif inst_rhs.opname == 'COMPARE_OP':
             pass
         elif inst_rhs.opname == 'BINARY_ADD':
             return self.utils.current_operand_set
-        elif inst_rhs.opname == 'BINARY_SUBSCR':
-            value_rhs = self.utils.last_binary_subscr
         elif inst_rhs.opname == 'FOR_ITER':
             self.utils.pop()
             value_rhs = self.process_rhs()
+        elif 'ROT_' in inst_rhs.opname:
+            if self.utils.rot_value:
+                value_rhs = self.utils.rot_value.pop()
+            self.utils.push(inst_rhs)
 
         return value_rhs
 

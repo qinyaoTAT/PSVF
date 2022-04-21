@@ -66,40 +66,31 @@ class DFS:
 
     def is_source(self, vertex):
         source_dict = self.load_rules.source
-        vertex_name = vertex
-        if ')' in vertex:
-            vertex_name = vertex.split(')')[-1]
         for rule_name in source_dict:
             if 'function' in source_dict[rule_name]:
                 functions = source_dict[rule_name]['function']
                 for i in functions:
-                    if i == vertex_name:
+                    if i in vertex:
                         return True
         return False
 
     def is_sink(self, vertex):
         sink_dict = self.load_rules.sink
-        vertex_name = vertex
-        if ')' in vertex:
-            vertex_name = vertex.split(')')[-1]
         for rule_name in sink_dict:
             if 'function' in sink_dict[rule_name]:
                 functions = sink_dict[rule_name]['function']
                 for i in functions:
-                    if i == vertex_name:
+                    if i in vertex:
                         return True
         return False
 
     def is_clean(self, vertex):
         clean_dict = self.load_rules.clean
-        vertex_name = vertex
-        if ')' in vertex:
-            vertex_name = vertex.split(')')[-1]
         for rule_name in clean_dict:
             if 'function' in clean_dict[rule_name]:
                 functions = clean_dict[rule_name]['function']
                 for i in functions:
-                    if i == vertex_name:
+                    if i in vertex:
                         return True
         return False
 

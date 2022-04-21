@@ -3,7 +3,7 @@ import os
 
 from argparse import ArgumentParser
 
-IS_COUNT_LINE = 1
+IS_COUNT_LINE = 0
 ALL_LINES = 0
 
 

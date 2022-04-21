@@ -38,11 +38,10 @@ class PSVF:
             module_name = file.replace(scan_path, '')[1:-3]
             module_name = module_name.replace(os.sep, '.')
             self.process.utils.current_module_name = module_name
-            self.process.process_top_insts(file)
-            # self.process.process_top_insts('D:\deeplearninglib_top10\\tensorflow-master\\tensorflow\compiler\mlir\\tfr\examples\mnist\mnist_train.py')
-            # break
-            # if 'api_template_v1.__init__.py' in file:
-            #     break
+            # self.process.process_top_insts(file)
+
+            self.process.process_top_insts('D:\deeplearninglib_top10\\tensorflow-master\\tensorflow\compiler\\aot\\tests\make_test_graphs.py')
+            break
 
         if is_graph:
             logging.info('start generate pdf graph...')
