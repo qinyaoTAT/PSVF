@@ -31,13 +31,9 @@ class Digraph:
         if ':' in vertex_out or ':' in vertex_in:
             return
         if vertex_in not in self.graph:
-            self.graph[vertex_in] = []
-            self.graph_record[vertex_in] = set()
-            self.graph_record[vertex_in].add(self.lineno)
+            self.add_vertex(vertex_in)
         if vertex_out not in self.graph:
-            self.graph[vertex_out] = []
-            self.graph_record[vertex_out] = set()
-            self.graph_record[vertex_in].add(self.lineno)
+            self.add_vertex(vertex_out)
         if vertex_in not in self.graph[vertex_out]:
             self.graph[vertex_out].append(vertex_in)
 

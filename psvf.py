@@ -40,7 +40,7 @@ class PSVF:
             self.process.utils.current_module_name = module_name
             # self.process.process_top_insts(file)
 
-            self.process.process_top_insts('D:\deeplearninglib_top10\\tensorflow-master\\tensorflow\compiler\\aot\\tests\make_test_graphs.py')
+            self.process.process_top_insts('D:\\deeplearninglib_top10\\tensorflow-master\\tensorflow\\compiler\\mlir\\tfr\\examples\\mnist\\mnist_train.py')
             break
 
         if is_graph:
@@ -55,8 +55,8 @@ class PSVF:
         logging.info('start generate report...')
         analyze.report(output)
 
-        with open('output/tensorflow_value_flow.json', 'w', encoding='utf-8') as f:
-            f.write(json.dumps(self.process.digraph.graph, indent=2, ensure_ascii=False, sort_keys=True))
+        # with open('output/tensorflow_value_flow.json', 'w', encoding='utf-8') as f:
+        #     f.write(json.dumps(self.process.digraph.graph, indent=2, ensure_ascii=False, sort_keys=True))
 
         end_time = int(time.time())
         use_time = end_time - start_time
