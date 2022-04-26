@@ -58,4 +58,13 @@ class Digraph:
         logging.info('start write visualization file...')
         dot.render(directory=output).replace('\\', '/')
 
+    def generate_errors(self, output, errors):
+        dot = graphviz.Digraph('errors', comment='generate source -> sink graph.',
+                               node_attr={'color': 'lightblue2', 'style': 'filled'})
+        dot.format = 'pdf'
+        for i in errors:
+            pass
+        logging.info('start write errors visualization file...')
+        dot.render(directory=output).replace('\\', '/')
+
 

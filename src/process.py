@@ -21,7 +21,7 @@ class Process:
         top_level_insts = []
         with codecs.open(file, 'r', encoding='UTF-8', errors='strict') as fp:
             src_code = fp.read()
-            dis.dis(src_code)
+            # dis.dis(src_code)
             code_obj = dis.Bytecode(src_code)
             for inst in code_obj:
                 top_level_insts.append(inst)
@@ -59,7 +59,7 @@ class Process:
                 if inst.starts_line:
                     self.utils.current_lineno = inst.starts_line
                     self.digraph.lineno = inst.starts_line
-                    if inst.starts_line == 160:
+                    if inst.starts_line == 1303:
                         print()
 
                 self.utils.push(inst)
@@ -209,8 +209,10 @@ class Process:
     def process_load_name(self, value):
         if value in self.utils.current_import_module:
             return self.utils.current_import_module[value]
-        else:
+        elif value in self.utils.project_module_set:
             return self.utils.current_module_name + '.' + value
+        else:
+            return value
 
     def process_build(self, inst):
         if 'BUILD_SLICE' in inst.opname:
@@ -275,11 +277,15 @@ class Process:
                 elif inst_method_name.argval in ['read', 'write']:
                     func_name = inst_method_name.argval
                 elif inst_method_name.argval in BUILD_IN_PASS_METHOD:
-                    if args_list:
-                        vertex_in = inst_global.argval
-                        if args_list[0].opname == 'LOAD_FAST' or args_list[0].opname == 'LOAD_NAME':
-                            vertex_out = args_list[0].argval
-                            self.digraph.add_edge(vertex_out, vertex_in)
+                    if not args_list:
+                        return
+                    vertex_in = inst_global.argval
+                    for arg in args_list:
+                        if isinstance(arg, set):
+                            for i in arg:
+                                self.digraph.add_edge(i, vertex_in)
+                        elif arg:
+                            self.digraph.add_edge(arg, vertex_in)
                     return
                 elif inst_global.opname == 'LOAD_GLOBAL':
                     func_name = inst_global.argval + '.' + inst_method_name.argval

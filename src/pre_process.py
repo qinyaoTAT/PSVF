@@ -19,6 +19,7 @@ def arg_parser():
 def get_file_list(path):
     file_list = []
     module_set = set()
+    function_name_set = set()
     if os.path.isfile(path):
         path = os.path.realpath(path)
         file_list.append(path)
@@ -44,11 +45,12 @@ def get_file_list(path):
 
 
 def get_lines(file):
-    if IS_COUNT_LINE:
-        with open(file, 'r', encoding='utf-8') as f:
-            global ALL_LINES
-            while True:
-                buffer = f.read(1024 * 1024)
-                if not buffer:
-                    break
-                ALL_LINES += buffer.count('\n')
+    if not IS_COUNT_LINE:
+        return
+    with open(file, 'r', encoding='utf-8') as f:
+        global ALL_LINES
+        while True:
+            buffer = f.read(1024 * 1024)
+            if not buffer:
+                break
+            ALL_LINES += buffer.count('\n')

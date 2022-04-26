@@ -6,6 +6,7 @@ class Utils:
         record information
         '''
         self.insts_stack = []
+        self.project_module_set = set()
         self.current_func_name = ''
         self.current_module_name = ''
         self.called_name = []
