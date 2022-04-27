@@ -18,6 +18,8 @@ Example graph: Problematic paths are marked in red.
 
 ## Usage
 
+`python3 psvf.py -s xxx/xxx -f json -g`
+
 ```buildoutcfg
 usage: psvf.py [-h] [-s SCAN_PATH] [-o OUTPUT] [-f FORMAT] [-g] [-v VERSION]
 
