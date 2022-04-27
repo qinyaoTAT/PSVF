@@ -7,7 +7,9 @@
         "read#-1",
         "os.environ",
         "input#-1",
-        "raw_input#-1"
+        "raw_input#-1",
+        "xml.dom.minidom.parse#-1",
+        "xml.sax.make_parser.parse"
       ],
       "name": "Untrusted input"
     },
