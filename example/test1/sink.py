@@ -17,3 +17,4 @@ def sink_all():
     eval(a)
     eval(b)
     os.system(c)
+    print(source.no_source())

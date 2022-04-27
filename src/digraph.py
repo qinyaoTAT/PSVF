@@ -5,6 +5,7 @@ import logging
 
 class Digraph:
     def __init__(self):
+        # graph 的节点值不要手动修改
         self.graph = {}
         # 记录行号信息
         self.graph_record = {}
@@ -44,27 +45,38 @@ class Digraph:
         node_name, lineno = value.split('##')
         return node_name, lineno
 
-    def generate(self, output, project_name='psvf'):
+    def generate(self, output, errors, project_name='psvf'):
+        errors_transfer_set = set()
+        errors_source_sink_set = set()
+        for i in errors:
+            for j in i:
+                if j == i[0] or j == i[-1]:
+                    errors_source_sink_set.add(j)
+                else:
+                    errors_transfer_set.add(j)
         dot = graphviz.Digraph(project_name, comment='generate project value flow graph.', node_attr={'color': 'lightblue2', 'style': 'filled'})
         dot.format = 'pdf'
         for i in self.graph:
             if self.graph[i]:
                 if self.graph_record[i]:
-                    dot.node(i, i + str(self.graph_record[i]))
+                    if i in errors_source_sink_set:
+                        dot.node(i, i + str(self.graph_record[i]), color='red')
+                    else:
+                        dot.node(i, i + str(self.graph_record[i]))
                 else:
                     dot.node(i)
                 for j in self.graph[i]:
-                    dot.edge(str(i), str(j))
+                    if (j in errors_transfer_set and i in errors_transfer_set) or \
+                            (j in errors_transfer_set and i in errors_source_sink_set) or \
+                            (j in errors_source_sink_set and i in errors_transfer_set):
+                        dot.edge(str(i), str(j), color='red')
+                    else:
+                        dot.edge(str(i), str(j))
+            elif i in errors_source_sink_set:
+                dot.node(i, i + str(self.graph_record[i]), color='red')
+
         logging.info('start write visualization file...')
         dot.render(directory=output).replace('\\', '/')
 
-    def generate_errors(self, output, errors):
-        dot = graphviz.Digraph('errors', comment='generate source -> sink graph.',
-                               node_attr={'color': 'lightblue2', 'style': 'filled'})
-        dot.format = 'pdf'
-        for i in errors:
-            pass
-        logging.info('start write errors visualization file...')
-        dot.render(directory=output).replace('\\', '/')
 
 

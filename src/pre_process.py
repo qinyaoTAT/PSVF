@@ -1,5 +1,6 @@
 # -*- coding:utf-8 -*-
 import os
+import re
 
 from argparse import ArgumentParser
 
@@ -11,6 +12,7 @@ def arg_parser():
     arg = ArgumentParser(description="Python Static Value-Flow Analysis Framework")
     arg.add_argument("-s", '--scan_path', dest='scan_path', help="specify the scan directory.", default='')
     arg.add_argument("-o", '--output', dest='output', help="specify the output directory.", default='output')
+    arg.add_argument("-f", '--format', dest='format', help="specify report format.", default='')
     arg.add_argument("-g", '--graph', action='store_true', help="generate graph file.")
     arg.add_argument("-v", '--version', help="show version.")
     return arg.parse_args()
@@ -19,7 +21,6 @@ def arg_parser():
 def get_file_list(path):
     file_list = []
     module_set = set()
-    function_name_set = set()
     if os.path.isfile(path):
         path = os.path.realpath(path)
         file_list.append(path)
@@ -42,6 +43,18 @@ def get_file_list(path):
                     module_name = module_name.replace('.__init__', '')
                 module_set.add(module_name)
     return file_list, module_set
+
+
+def get_function_name(file):
+    function_name_set = set()
+    with open(file, 'r', encoding='utf-8') as f:
+        lines = f.readlines()
+        for i in lines:
+            matchobj = re.match(r'def .*\(', i)
+            if matchobj:
+                function_name = matchobj.group()[4:-1]
+                function_name_set.add(function_name)
+    return function_name_set
 
 
 def get_lines(file):

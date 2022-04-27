@@ -1,4 +1,5 @@
 # -*- coding:utf-8 -*-
+import copy
 import logging
 import dis
 import codecs
@@ -16,6 +17,14 @@ class Process:
         if self.utils.current_module_name:
             return self.utils.current_module_name + '.' + name
         return name
+
+    def process_load_name(self, value):
+        if value in self.utils.current_import_module:
+            return self.utils.current_import_module[value]
+        elif value in self.utils.project_module_set:
+            return self.utils.current_module_name + '.' + value
+        else:
+            return value
 
     def process_top_insts(self, file):
         top_level_insts = []
@@ -59,7 +68,7 @@ class Process:
                 if inst.starts_line:
                     self.utils.current_lineno = inst.starts_line
                     self.digraph.lineno = inst.starts_line
-                    if inst.starts_line == 1303:
+                    if inst.starts_line == 228:
                         print()
 
                 self.utils.push(inst)
@@ -201,18 +210,10 @@ class Process:
             for i in range(2):
                 value = self.process_rhs()
                 if isinstance(value, str):
-                    self.utils.current_operand_set.add(value)
+                    self.utils.binary_operand_set.add(value)
                 elif isinstance(value, set):
-                    self.utils.current_operand_set |= value
+                    self.utils.binary_operand_set |= value
             self.utils.push(binary_inst)
-
-    def process_load_name(self, value):
-        if value in self.utils.current_import_module:
-            return self.utils.current_import_module[value]
-        elif value in self.utils.project_module_set:
-            return self.utils.current_module_name + '.' + value
-        else:
-            return value
 
     def process_build(self, inst):
         if 'BUILD_SLICE' in inst.opname:
@@ -231,7 +232,7 @@ class Process:
                 elem_set |= value_rhs
             elif value_rhs:
                 elem_set.add(value_rhs)
-        self.utils.current_build_set = elem_set
+        self.utils.build_elem_set = elem_set
         self.utils.push(build_inst)
 
     def process_call(self, inst):
@@ -251,7 +252,11 @@ class Process:
             if 'CALL_FUNCTION' in inst.opname:
                 inst_func_name = self.utils.pop()
                 if inst_func_name.opname == 'LOAD_GLOBAL':
-                    func_name = self.utils.current_module_name + '.' + inst_func_name.argval
+                    func_name = inst_func_name.argval
+                    if func_name in BUILD_IN_FUNC:
+                        self.digraph.add_edge(func_name + '#0', func_name + '#-1')
+                    elif func_name in self.utils.current_function_set:
+                        func_name = self.utils.current_module_name + '.' + inst_func_name.argval
                 elif inst_func_name.opname == 'LOAD_ATTR':
                     attr_name = inst_func_name.argval
                     inst_global = self.utils.pop()
@@ -408,7 +413,8 @@ class Process:
         elif 'BUILD_' in inst_rhs.opname:
             if 'BUILD_SLICE' in inst_rhs.opname:
                 return ''
-            return self.utils.current_build_set
+            value_rhs = self.utils.build_elem_set
+            self.utils.build_elem_set = set()
         elif 'CALL_' in inst_rhs.opname:
             func_name = self.utils.called_name.pop()
             if isinstance(func_name, str):
@@ -418,7 +424,8 @@ class Process:
         elif inst_rhs.opname == 'COMPARE_OP':
             pass
         elif 'BINARY_' in inst_rhs.opname:
-            return self.utils.current_operand_set
+            value_rhs = copy.deepcopy(self.utils.binary_operand_set)
+            self.utils.binary_operand_set = set()
         elif inst_rhs.opname == 'FOR_ITER':
             self.utils.pop()
             value_rhs = self.process_rhs()

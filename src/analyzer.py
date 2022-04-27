@@ -94,7 +94,7 @@ class DFS:
                         return True
         return False
 
-    def report(self, output):
+    def report(self, output, fmt):
         if self.errors:
             out_data = {
                 'errors': []
@@ -121,9 +121,10 @@ class DFS:
                         })
                 out_data['errors'].append(error_detail)
             logging.warning('Found ' + str(len(self.errors)) + ' Errors!!!')
-            with open(output, 'w', encoding='utf-8') as f:
-                f.write(json.dumps(out_data, indent=2, ensure_ascii=False, sort_keys=True))
-                logging.info('Write File: ' + output)
+            if fmt == 'json':
+                with open(output, 'w', encoding='utf-8') as f:
+                    f.write(json.dumps(out_data, indent=2, ensure_ascii=False, sort_keys=True))
+                    logging.info('Write Report File: ' + output)
         else:
             logging.warning('Not Found Errors!!!')
 

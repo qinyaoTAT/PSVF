@@ -2,6 +2,9 @@ import sys
 import os
 
 
+def no_source():
+    return 'no source'
+
 def source_arg():
     ret = sys.argv
     return ret[0]
