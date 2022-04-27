@@ -34,7 +34,6 @@ class PSVF:
         file_list, project_module_set = pre_process.get_file_list(scan_path)
         self.process.utils.project_module_set = project_module_set
 
-
         start_time = int(time.time())
         counter = 0
         for file in file_list:
@@ -63,6 +62,7 @@ class PSVF:
         if is_graph:
             logging.info('start generate pdf graph...')
             self.process.digraph.generate(output, analyze.errors, project_name=project_name)
+        self.process.digraph.generate_errors(output, analyze.errors, project_name)
 
         end_time = int(time.time())
         use_time = end_time - start_time

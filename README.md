@@ -12,7 +12,7 @@ Advantage:
 
 PSVF is a tool designed to find vulnerability in Python code. The main principle is to build a value flow graph based on python bytecode, and then analyze the graph.
 
-Example graph: Problematic paths are marked in red.
+Example errors path graph: source/sink are marked in red.
 
 ![img.png](doc/example_graph.png)
 

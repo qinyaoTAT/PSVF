@@ -78,8 +78,18 @@ class Digraph:
             elif i in errors_source_sink_set:
                 dot.node(i, i + str(self.graph_record[i]), color='red')
 
-        logging.info('start write visualization file...')
+        logging.info('start write project visualization file...')
         dot.render(directory=output).replace('\\', '/')
 
+    def generate_errors(self, output, errors, project_name):
+        dot = graphviz.Digraph(project_name + '_errors', comment='generate source --> sink graph.',
+                               node_attr={'color': 'lightblue2', 'style': 'filled', 'shape': 'box'})
+        dot.format = 'png'
+        for i in errors:
+            dot.node(i[0], color='red')
+            dot.node(i[-1], color='red')
+            for j in range(len(i) - 1):
+                dot.edge(i[j], i[j + 1])
 
-
+        logging.info('start write errors visualization file...')
+        dot.render(directory=output).replace('\\', '/')
