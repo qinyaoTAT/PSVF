@@ -36,6 +36,7 @@ class PSVF:
 
 
         start_time = int(time.time())
+        counter = 0
         for file in file_list:
             logging.info('process file: ' + file)
             module_name = file.replace(scan_path, '')[1:-3]
@@ -45,7 +46,10 @@ class PSVF:
             self.process.utils.current_module_name = module_name
             self.process.process_top_insts(file)
 
-            # self.process.process_top_insts('D:\\deeplearninglib_top10\\tensorflow-master\\tensorflow\\compiler\\mlir\\tfr\\examples\\mnist\\mnist_train.py')
+            counter += 1
+            if counter > 100:
+                break
+            # self.process.process_top_insts('')
             # break
 
         logging.info('start analyze graph...')
@@ -59,9 +63,6 @@ class PSVF:
         if is_graph:
             logging.info('start generate pdf graph...')
             self.process.digraph.generate(output, analyze.errors, project_name=project_name)
-
-        # with open('output/tensorflow_value_flow.json', 'w', encoding='utf-8') as f:
-        #     f.write(json.dumps(self.process.digraph.graph, indent=2, ensure_ascii=False, sort_keys=True))
 
         end_time = int(time.time())
         use_time = end_time - start_time

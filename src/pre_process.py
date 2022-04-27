@@ -4,7 +4,7 @@ import re
 
 from argparse import ArgumentParser
 
-IS_COUNT_LINE = 0
+IS_COUNT_LINE = 1
 ALL_LINES = 0
 
 
@@ -53,6 +53,14 @@ def get_function_name(file):
             matchobj = re.match(r'def .*\(', i)
             if matchobj:
                 function_name = matchobj.group()[4:-1]
+                function_name_set.add(function_name)
+            matchobj = re.match(r'class .*\(', i)
+            matchobj2 = re.match(r'class .*:', i)
+            if matchobj:
+                function_name = matchobj.group()[6:-1]
+                function_name_set.add(function_name)
+            if matchobj2:
+                function_name = matchobj2.group()[6:-1]
                 function_name_set.add(function_name)
     return function_name_set
 

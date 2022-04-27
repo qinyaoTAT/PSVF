@@ -125,10 +125,7 @@ class DFS:
                 with open(output, 'w', encoding='utf-8') as f:
                     f.write(json.dumps(out_data, indent=2, ensure_ascii=False, sort_keys=True))
                     logging.info('Write Report File: ' + output)
+                with open(output[:-4] + '_origin.json', 'w', encoding='utf-8') as f:
+                    f.write(json.dumps(self.graph, indent=2, ensure_ascii=False, sort_keys=True))
         else:
             logging.warning('Not Found Errors!!!')
-
-
-
-
-

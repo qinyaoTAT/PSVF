@@ -64,7 +64,10 @@ class Digraph:
                     else:
                         dot.node(i, i + str(self.graph_record[i]))
                 else:
-                    dot.node(i)
+                    if i in errors_source_sink_set:
+                        dot.node(i, color='red')
+                    else:
+                        dot.node(i)
                 for j in self.graph[i]:
                     if (j in errors_transfer_set and i in errors_transfer_set) or \
                             (j in errors_transfer_set and i in errors_source_sink_set) or \
