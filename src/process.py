@@ -68,8 +68,8 @@ class Process:
                 if inst.starts_line:
                     self.utils.current_lineno = inst.starts_line
                     self.digraph.lineno = inst.starts_line
-                    if inst.starts_line == 228:
-                        print()
+                    # if inst.starts_line == 49:
+                    #     print()
 
                 self.utils.push(inst)
 
@@ -312,6 +312,10 @@ class Process:
                     elif inst_global.opname == 'LOAD_NAME':
                         value = self.process_load_name(inst_global.argval)
                         func_name = value + '.' + attr_name
+                    elif inst_global.opname == 'LOAD_FAST':
+                        func_name = inst_global.argval + '.' + attr_name
+                elif not isinstance(inst_method_name.argval, str):
+                    return
                 else:
                     func_name = inst_method_name.argval
 
@@ -385,7 +389,9 @@ class Process:
     def process_rhs(self, value_lhs=''):
         inst_rhs = self.utils.pop()
         value_rhs = ''
-        if 'LOAD_CONST' in inst_rhs.opname:
+        if inst_rhs is None:
+            return value_rhs
+        elif 'LOAD_CONST' in inst_rhs.opname:
             pass
         elif 'LOAD_NAME' in inst_rhs.opname:
             value_rhs = self.process_load_name(inst_rhs.argval)

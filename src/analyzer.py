@@ -70,7 +70,7 @@ class DFS:
             if 'function' in source_dict[rule_name]:
                 functions = source_dict[rule_name]['function']
                 for i in functions:
-                    if i in vertex:
+                    if i == vertex:
                         return True
         return False
 
@@ -80,7 +80,7 @@ class DFS:
             if 'function' in sink_dict[rule_name]:
                 functions = sink_dict[rule_name]['function']
                 for i in functions:
-                    if i in vertex:
+                    if i == vertex:
                         return True
         return False
 

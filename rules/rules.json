@@ -9,7 +9,7 @@
         "input#-1",
         "raw_input#-1",
         "xml.dom.minidom.parse#-1",
-        "xml.sax.make_parser.parse"
+        "xml.sax.make_parser.parse#-1"
       ],
       "name": "Untrusted input"
     },

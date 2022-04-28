@@ -82,12 +82,14 @@ class Digraph:
         dot.render(directory=output).replace('\\', '/')
 
     def generate_errors(self, output, errors, project_name):
-        dot = graphviz.Digraph(project_name + '_errors', comment='generate source --> sink graph.',
+        dot = graphviz.Digraph(project_name + '_errors', comment='generate source --> sink graph.', strict=True,
                                node_attr={'color': 'lightblue2', 'style': 'filled', 'shape': 'box'})
         dot.format = 'png'
         for i in errors:
-            dot.node(i[0], color='red')
-            dot.node(i[-1], color='red')
+            source_detail = i[0] + '\nlineno:' + str(self.graph_record[i[0]])
+            sink_detail = i[-1] + '\nlineno:' + str(self.graph_record[i[-1]])
+            dot.node(i[0], source_detail, color='red')
+            dot.node(i[-1], sink_detail, color='red')
             for j in range(len(i) - 1):
                 dot.edge(i[j], i[j + 1])
 

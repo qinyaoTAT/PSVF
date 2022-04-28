@@ -30,11 +30,11 @@ class PSVF:
             logging.error('please specify the correct output directory!!!')
             exit(-1)
 
+        start_time = int(time.time())
         project_name = scan_path.split(os.sep)[-1]
         file_list, project_module_set = pre_process.get_file_list(scan_path)
         self.process.utils.project_module_set = project_module_set
 
-        start_time = int(time.time())
         counter = 0
         for file in file_list:
             logging.info('process file: ' + file)
@@ -43,12 +43,13 @@ class PSVF:
             function_name_set = pre_process.get_function_name(file)
             self.process.utils.current_function_set = function_name_set
             self.process.utils.current_module_name = module_name
-            self.process.process_top_insts(file)
 
+            self.process.process_top_insts(file)
             counter += 1
-            if counter > 100:
-                break
-            # self.process.process_top_insts('')
+            # if counter > 100:
+            #     break
+
+            # self.process.process_top_insts('D:\deeplearninglib_top10\\tensorflow-master\\tensorflow\compiler\mlir\\tfr\examples\pad\ops_defs.py')
             # break
 
         logging.info('start analyze graph...')
