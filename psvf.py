@@ -50,7 +50,7 @@ class PSVF:
             #     break
 
             # self.process.process_top_insts('D:\deeplearninglib_top10\\tensorflow-master\\tensorflow\compiler\mlir\\tfr\examples\pad\ops_defs.py')
-            # break
+            break
 
         logging.info('start analyze graph...')
         analyze = analyzer.DFS(self.process.digraph.graph)

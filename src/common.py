@@ -41,5 +41,10 @@ BUILD_IN_DICT_METHOD = ['get', 'items', 'keys', 'pop', 'popitem', 'reversed', 's
 
 BUILD_IN_PASS_METHOD = ['append', 'update']
 
-BUILD_IN_MODEL_FUNC = ['os.path.abspath', 'os.path.basename', 'os.path.commonpath', 'os.path.commonprefix', 'os.path.dirname', 'os.path.exists', 'os.path.lexists', 'os.path.expanduser', 'os.path.expandvars', 'os.path.getatime', 'os.path.getmtime', 'os.path.getctime', 'os.path.getsize', 'os.path.isabs', 'os.path.isfile', 'os.path.isdir', 'os.path.islink', 'os.path.ismount', 'os.path.join', 'os.path.normcase', 'os.path.normpath', 'os.path.realpath', 'os.path.relpath', 'os.path.samefile', 'os.stat', 'os.path.sameopenfile', 'os.path.samestat', 'os.path.split', 'os.path.splitdrive', 'os.path.splitext', 'os.path.supports_unicode_filenames']
+BUILD_IN_MODEL_FUNC = ['os.path.abspath', 'os.path.basename', 'os.path.commonpath', 'os.path.commonprefix', 'os.path.dirname',
+                       'os.path.exists', 'os.path.lexists', 'os.path.expanduser', 'os.path.expandvars', 'os.path.getatime',
+                       'os.path.getmtime', 'os.path.getctime', 'os.path.getsize', 'os.path.isabs', 'os.path.isfile', 'os.path.isdir',
+                       'os.path.islink', 'os.path.ismount', 'os.path.join', 'os.path.normcase', 'os.path.normpath', 'os.path.realpath',
+                       'os.path.relpath', 'os.path.samefile', 'os.stat', 'os.path.sameopenfile', 'os.path.samestat', 'os.path.split',
+                       'os.path.splitdrive', 'os.path.splitext', 'os.path.supports_unicode_filenames']
 

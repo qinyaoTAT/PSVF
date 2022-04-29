@@ -68,8 +68,8 @@ class Process:
                 if inst.starts_line:
                     self.utils.current_lineno = inst.starts_line
                     self.digraph.lineno = inst.starts_line
-                    # if inst.starts_line == 49:
-                    #     print()
+                    if inst.starts_line == 1303:
+                        print()
 
                 self.utils.push(inst)
 
@@ -243,7 +243,7 @@ class Process:
         call_inst = self.utils.pop()
         if 'CALL_' in inst.opname:
             args_count = inst.argval
-            # key value参数去掉第一句key的LOAD_CONST
+            # key=value参数去掉第一句key的LOAD_CONST
             if 'CALL_FUNCTION_KW' in inst.opname:
                 self.utils.pop()
             args_list = self.process_args(args_count)
@@ -253,9 +253,7 @@ class Process:
                 inst_func_name = self.utils.pop()
                 if inst_func_name.opname == 'LOAD_GLOBAL':
                     func_name = inst_func_name.argval
-                    if func_name in BUILD_IN_FUNC:
-                        self.digraph.add_edge(func_name + '#0', func_name + '#-1')
-                    elif func_name in self.utils.current_function_set:
+                    if func_name in self.utils.current_function_set:
                         func_name = self.utils.current_module_name + '.' + inst_func_name.argval
                 elif inst_func_name.opname == 'LOAD_ATTR':
                     attr_name = inst_func_name.argval
@@ -440,6 +438,4 @@ class Process:
                 value_rhs = self.utils.rot_value.pop()
             self.utils.push(inst_rhs)
         return value_rhs
-
-
 
