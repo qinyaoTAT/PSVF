@@ -42,11 +42,7 @@ class PSVF:
             function_name_set = pre_process.get_function_name(file)
             self.process.utils.current_function_set = function_name_set
             self.process.utils.current_module_name = module_name
-
             self.process.process_top_insts(file)
-
-            # self.process.process_top_insts('D:\deeplearninglib_top10\\tensorflow-master\\tensorflow\compiler\mlir\\tfr\examples\pad\ops_defs.py')
-            # break
 
         logging.info('start analyze graph...')
         analyze = analyzer.DFS(self.process.digraph.graph)

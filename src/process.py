@@ -68,8 +68,6 @@ class Process:
                 if inst.starts_line:
                     self.utils.current_lineno = inst.starts_line
                     self.digraph.lineno = inst.starts_line
-                    if inst.starts_line == 16:
-                        print()
 
                 self.utils.push(inst)
 
