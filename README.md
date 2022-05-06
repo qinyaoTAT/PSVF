@@ -6,7 +6,7 @@ Advantage:
 - Based on Value-Flow graph
 - Supports data flow across files
 - Pure python implementation
-- Super Fast (10w lines / 1 minute)
+- Super Fast (10w+ lines / 1 minute)
 
 ## Overview
 
