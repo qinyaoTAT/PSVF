@@ -65,6 +65,14 @@
       "name": "code injection",
       "level": 3,
       "cwe": ""
+    },
+    "p2002": {
+      "function": [
+        "write#0"
+      ],
+      "name": "file injection",
+      "level": 3,
+      "cwe": ""
     }
   },
   "transfer": {

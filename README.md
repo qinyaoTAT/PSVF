@@ -6,19 +6,19 @@ Advantage:
 - Based on Value-Flow graph
 - Supports data flow across files
 - Pure python implementation
-- Fast (10w lines / 1 minute)
+- Super Fast (10w lines / 1 minute)
 
 ## Overview
 
-PSVF is a tool designed to find vulnerability in Python code. The main principle is to build a value flow graph based on python bytecode, and then analyze the graph.
+PSVF is a tool designed to find Data-Flow security issues in Python code. The main principle is to build a value flow graph based on python bytecode, and then analyze the graph.
 
-Example errors path graph: source/sink are marked in red.
+Example errors graph: source/sink points are marked in red.
 
 ![img.png](doc/example_graph.png)
 
 ## Usage
 
-`python3 psvf.py -s xxx/xxx -f json -g`
+`python3 psvf.py -s xxx/xxx -f json`
 
 ```buildoutcfg
 usage: psvf.py [-h] [-s SCAN_PATH] [-o OUTPUT] [-f FORMAT] [-g] [-v VERSION]

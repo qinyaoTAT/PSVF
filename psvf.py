@@ -35,7 +35,6 @@ class PSVF:
         file_list, project_module_set = pre_process.get_file_list(scan_path)
         self.process.utils.project_module_set = project_module_set
 
-        counter = 0
         for file in file_list:
             logging.info('process file: ' + file)
             module_name = file.replace(scan_path, '')[1:-3]
@@ -45,12 +44,9 @@ class PSVF:
             self.process.utils.current_module_name = module_name
 
             self.process.process_top_insts(file)
-            counter += 1
-            # if counter > 100:
-            #     break
 
             # self.process.process_top_insts('D:\deeplearninglib_top10\\tensorflow-master\\tensorflow\compiler\mlir\\tfr\examples\pad\ops_defs.py')
-            break
+            # break
 
         logging.info('start analyze graph...')
         analyze = analyzer.DFS(self.process.digraph.graph)

@@ -17,11 +17,11 @@ BUILD_IN_ERROR = ['ArithmeticError', 'AssertionError', 'AttributeError', 'BaseEx
                 'UnicodeError', 'UnicodeTranslateError', 'UnicodeWarning', 'UserWarning', 'ValueError', 'Warning',
                 'WindowsError', 'ZeroDivisionError']
 
-BUILD_IN_FUNC = ['abs', 'all', 'any', 'ascii', 'bin', 'bool',
+BUILD_IN_FUNC = ['abs', 'all', 'any', 'ascii', 'bin', 'bool', 'eval', 'exec',
                 'bytearray', 'bytes', 'callable', 'chr', 'classmethod', 'compile', 'complex',
                 'copyright', 'credits', 'delattr', 'dict', 'dir', 'divmod', 'enumerate',
                 'exit', 'filter', 'float', 'format', 'frozenset', 'getattr', 'globals', 'hasattr', 'hash', 'help',
-                'hex', 'id', 'input', 'int', 'isinstance', 'issubclass', 'iter', 'len', 'license',
+                'hex', 'id', 'int', 'isinstance', 'issubclass', 'iter', 'len', 'license',
                 'list', 'locals', 'map', 'max', 'memoryview', 'min', 'next', 'object', 'oct',
                 'ord', 'pow', 'print', 'property', 'quit', 'range', 'repr', 'reversed', 'round', 'set', 'setattr',
                 'slice', 'sorted', 'staticmethod', 'str', 'sum', 'super', 'tuple', 'type', 'vars', 'zip', '__import__',
@@ -40,6 +40,8 @@ BUILD_IN_STR_METHOD = ['capitalize', 'casefold', 'center', 'count', 'encode', 'e
 BUILD_IN_DICT_METHOD = ['get', 'items', 'keys', 'pop', 'popitem', 'reversed', 'setdefault', 'update', 'values']
 
 BUILD_IN_PASS_METHOD = ['append', 'update']
+
+BUILD_IN_FILE_IO = ['read', 'write']
 
 BUILD_IN_MODEL_FUNC = ['os.path.abspath', 'os.path.basename', 'os.path.commonpath', 'os.path.commonprefix', 'os.path.dirname',
                        'os.path.exists', 'os.path.lexists', 'os.path.expanduser', 'os.path.expandvars', 'os.path.getatime',

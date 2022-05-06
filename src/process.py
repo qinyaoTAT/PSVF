@@ -6,7 +6,7 @@ import codecs
 
 from src.utils import Utils
 from src.digraph import Digraph
-from src.common import BUILD_IN_FUNC, BUILD_IN_STR_METHOD, BUILD_IN_DICT_METHOD, BUILD_IN_PASS_METHOD, BUILD_IN_MODEL_FUNC
+from src.common import BUILD_IN_FUNC, BUILD_IN_STR_METHOD, BUILD_IN_DICT_METHOD, BUILD_IN_PASS_METHOD, BUILD_IN_MODEL_FUNC, BUILD_IN_FILE_IO
 
 class Process:
     def __init__(self):
@@ -68,7 +68,7 @@ class Process:
                 if inst.starts_line:
                     self.utils.current_lineno = inst.starts_line
                     self.digraph.lineno = inst.starts_line
-                    if inst.starts_line == 1303:
+                    if inst.starts_line == 16:
                         print()
 
                 self.utils.push(inst)
@@ -273,11 +273,12 @@ class Process:
                     if inst_global.opname == 'LOAD_FAST' or inst_global.opname == 'LOAD_NAME':
                         self.utils.push(inst_global)
                     func_name = 'str.' + inst_method_name.argval
-                    self.digraph.add_edge(func_name + '#0', func_name + '#-1')
+                    for i in range(args_count):
+                        self.digraph.add_edge(func_name + '#' + str(i), func_name + '#-1')
                 elif inst_method_name.argval in BUILD_IN_DICT_METHOD:
                     self.utils.push(inst_global)
                     return
-                elif inst_method_name.argval in ['read', 'write']:
+                elif inst_method_name.argval in BUILD_IN_FILE_IO:
                     func_name = inst_method_name.argval
                 elif inst_method_name.argval in BUILD_IN_PASS_METHOD:
                     if not args_list:
@@ -320,6 +321,7 @@ class Process:
             if not func_name:
                 return
             if func_name in BUILD_IN_FUNC or func_name in BUILD_IN_MODEL_FUNC:
+                func_name = self.utils.current_module_name + '.' + func_name
                 self.digraph.add_edge(func_name + '#0', func_name + '#-1')
 
             # arg to func

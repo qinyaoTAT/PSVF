@@ -70,7 +70,7 @@ class DFS:
             if 'function' in source_dict[rule_name]:
                 functions = source_dict[rule_name]['function']
                 for i in functions:
-                    if i == vertex:
+                    if i in vertex:
                         return True
         return False
 
@@ -80,7 +80,7 @@ class DFS:
             if 'function' in sink_dict[rule_name]:
                 functions = sink_dict[rule_name]['function']
                 for i in functions:
-                    if i == vertex:
+                    if i in vertex:
                         return True
         return False
 
@@ -125,7 +125,7 @@ class DFS:
                 with open(output, 'w', encoding='utf-8') as f:
                     f.write(json.dumps(out_data, indent=2, ensure_ascii=False, sort_keys=True))
                     logging.info('Write Report File: ' + output)
-                with open(output[:-4] + '_origin.json', 'w', encoding='utf-8') as f:
+                with open(output[:-5] + '_origin.json', 'w', encoding='utf-8') as f:
                     f.write(json.dumps(self.graph, indent=2, ensure_ascii=False, sort_keys=True))
         else:
             logging.warning('Not Found Errors!!!')
