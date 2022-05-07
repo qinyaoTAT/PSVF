@@ -17,7 +17,7 @@ BUILD_IN_ERROR = ['ArithmeticError', 'AssertionError', 'AttributeError', 'BaseEx
                 'UnicodeError', 'UnicodeTranslateError', 'UnicodeWarning', 'UserWarning', 'ValueError', 'Warning',
                 'WindowsError', 'ZeroDivisionError']
 
-BUILD_IN_FUNC = ['abs', 'all', 'any', 'ascii', 'bin', 'bool', 'eval', 'exec',
+BUILD_IN_FUNC = ['abs', 'all', 'any', 'ascii', 'bin', 'bool', 'eval', 'exec', 'input', 'raw_input',
                 'bytearray', 'bytes', 'callable', 'chr', 'classmethod', 'compile', 'complex',
                 'copyright', 'credits', 'delattr', 'dict', 'dir', 'divmod', 'enumerate',
                 'exit', 'filter', 'float', 'format', 'frozenset', 'getattr', 'globals', 'hasattr', 'hash', 'help',

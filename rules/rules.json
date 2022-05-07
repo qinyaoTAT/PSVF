@@ -3,7 +3,6 @@
     "p1000": {
       "function": [
         "sys.argv",
-        "open#-1",
         "read#-1",
         "os.environ",
         "input#-1",

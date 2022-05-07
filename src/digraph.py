@@ -1,4 +1,6 @@
 # -*- coding:utf-8 -*-
+import os
+
 import graphviz
 import logging
 
@@ -7,17 +9,22 @@ class Digraph:
     def __init__(self):
         # graph 的节点值不要手动修改
         self.graph = {}
-        # 记录行号信息
+        # 记录位置信息
         self.graph_record = {}
         self.lineno = 0
+        self.file_path = ''
 
     def add_vertex(self, value):
-        if not value:
+        if not value or not isinstance(value, str):
             return
-        if value not in self.graph and isinstance(value, str):
+        if value not in self.graph:
             self.graph[value] = []
-            self.graph_record[value] = set()
-            self.graph_record[value].add(self.lineno)
+            self.graph_record[value] = {
+                'lineno': set(),
+                'path': set()
+            }
+        self.graph_record[value]['lineno'].add(self.lineno)
+        self.graph_record[value]['path'].add(self.file_path)
 
     def del_vertex(self, value):
         if not value:
@@ -31,10 +38,8 @@ class Digraph:
             return
         if ':' in vertex_out or ':' in vertex_in:
             return
-        if vertex_in not in self.graph:
-            self.add_vertex(vertex_in)
-        if vertex_out not in self.graph:
-            self.add_vertex(vertex_out)
+        self.add_vertex(vertex_in)
+        self.add_vertex(vertex_out)
         if vertex_in not in self.graph[vertex_out]:
             self.graph[vertex_out].append(vertex_in)
 
@@ -86,10 +91,12 @@ class Digraph:
                                node_attr={'color': 'lightblue2', 'style': 'filled', 'shape': 'box'})
         dot.format = 'png'
         for i in errors:
-            source_detail = i[0] + '\nlineno:' + str(self.graph_record[i[0]])
-            sink_detail = i[-1] + '\nlineno:' + str(self.graph_record[i[-1]])
-            dot.node(i[0], source_detail, color='red')
-            dot.node(i[-1], sink_detail, color='red')
+            for j in i:
+                detail = j + os.linesep + 'path:' + str(self.graph_record[j]['path']) + os.linesep + 'lineno:' + str(self.graph_record[j]['lineno'])
+                if j == i[0] or j == i[-1]:
+                    dot.node(j, detail, color='red')
+                else:
+                    dot.node(j, detail)
             for j in range(len(i) - 1):
                 dot.edge(i[j], i[j + 1])
 

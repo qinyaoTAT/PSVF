@@ -37,8 +37,13 @@ class PSVF:
 
         for file in file_list:
             logging.info('process file: ' + file)
-            module_name = file.replace(scan_path, '')[1:-3]
-            module_name = module_name.replace(os.sep, '.')
+            file_path = file.replace(scan_path, '')
+            file_path = file_path.lstrip('\\')
+            file_path = file_path.lstrip('/')
+            file_path = file_path.replace(os.sep, '.')
+            self.process.digraph.file_path = file_path
+
+            module_name = file_path[:-3]
             function_name_set = pre_process.get_function_name(file)
             self.process.utils.current_function_set = function_name_set
             self.process.utils.current_module_name = module_name
@@ -55,6 +60,7 @@ class PSVF:
         if is_graph:
             logging.info('start generate pdf graph...')
             self.process.digraph.generate(output, analyze.errors, project_name=project_name)
+
         self.process.digraph.generate_errors(output, analyze.errors, project_name)
 
         end_time = int(time.time())

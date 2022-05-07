@@ -13,7 +13,8 @@ def arg_parser():
     arg.add_argument("-s", '--scan_path', dest='scan_path', help="specify the scan directory.", default='')
     arg.add_argument("-o", '--output', dest='output', help="specify the output directory.", default='output')
     arg.add_argument("-f", '--format', dest='format', help="specify report format.", default='')
-    arg.add_argument("-g", '--graph', action='store_true', help="generate graph file.")
+    arg.add_argument("-g", '--graph', action='store_true', help="generate all vertex graph file, "
+                                                                "may get stuck if turned on.")
     arg.add_argument("-v", '--version', help="show version.")
     return arg.parse_args()
 
