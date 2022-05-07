@@ -42,7 +42,6 @@ class PSVF:
             file_path = file_path.lstrip('/')
             file_path = file_path.replace(os.sep, '.')
             self.process.digraph.file_path = file_path
-
             module_name = file_path[:-3]
             function_name_set = pre_process.get_function_name(file)
             self.process.utils.current_function_set = function_name_set

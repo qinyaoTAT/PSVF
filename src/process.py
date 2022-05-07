@@ -22,7 +22,7 @@ class Process:
         if value in self.utils.current_import_module:
             return self.utils.current_import_module[value]
         elif value in self.utils.project_module_set:
-            return self.utils.current_module_name + '.' + value
+            return self.utils.current_func_name + '.' + value
         else:
             return value
 
@@ -36,6 +36,7 @@ class Process:
                 top_level_insts.append(inst)
             co_consts = code_obj.codeobj.co_consts
         self.utils.current_import_module = dict()
+        self.digraph.function = ''
         self.process_insts(top_level_insts)
         self.utils.clean()
         self.process_sub_body_insts(co_consts, type(code_obj.codeobj))
@@ -49,6 +50,7 @@ class Process:
                 co_varnames = sub_codeobj.co_varnames
                 co_argcount = sub_codeobj.co_argcount
                 self.utils.current_func_name = self.get_whole_name(func_or_class_name)
+                self.digraph.function = func_or_class_name
                 if co_argcount > 0:
                     args_list = co_varnames[:co_argcount]
                     self.process_declaration_args(args_list)
@@ -270,14 +272,14 @@ class Process:
                 if inst_method_name.argval in BUILD_IN_STR_METHOD:
                     if inst_global.opname == 'LOAD_FAST' or inst_global.opname == 'LOAD_NAME':
                         self.utils.push(inst_global)
-                    func_name = self.utils.current_module_name + '.' + inst_method_name.argval + '.' + str(self.utils.current_module_name)
+                    func_name = self.utils.current_func_name + '.' + inst_method_name.argval
                     for i in range(args_count):
                         self.digraph.add_edge(func_name + '#' + str(i), func_name + '#-1')
                 elif inst_method_name.argval in BUILD_IN_DICT_METHOD:
                     self.utils.push(inst_global)
                     return
                 elif inst_method_name.argval in BUILD_IN_FILE_IO:
-                    func_name = self.utils.current_module_name + '.' + inst_method_name.argval
+                    func_name = self.utils.current_func_name + '.' + inst_method_name.argval
                 elif inst_method_name.argval in BUILD_IN_PASS_METHOD:
                     if not args_list:
                         return
@@ -319,7 +321,7 @@ class Process:
             if not func_name:
                 return
             if func_name in BUILD_IN_FUNC or func_name in BUILD_IN_MODEL_FUNC:
-                func_name = self.utils.current_module_name + '.' + func_name + '.' + str(self.utils.current_module_name)
+                func_name = self.utils.current_func_name + '.' + func_name
                 self.digraph.add_edge(func_name + '#0', func_name + '#-1')
 
             # arg to func

@@ -13,6 +13,7 @@ class Digraph:
         self.graph_record = {}
         self.lineno = 0
         self.file_path = ''
+        self.function = ''
 
     def add_vertex(self, value):
         if not value or not isinstance(value, str):
@@ -20,11 +21,16 @@ class Digraph:
         if value not in self.graph:
             self.graph[value] = []
             self.graph_record[value] = {
-                'lineno': set(),
-                'path': set()
+                'lineno': '',
+                'path': '',
+                'function': ''
             }
-        self.graph_record[value]['lineno'].add(self.lineno)
-        self.graph_record[value]['path'].add(self.file_path)
+        if not self.graph_record[value]['lineno']:
+            self.graph_record[value]['lineno'] = str(self.lineno)
+        if not self.graph_record[value]['path']:
+            self.graph_record[value]['path'] = str(self.file_path)
+        if not self.graph_record[value]['function']:
+            self.graph_record[value]['function'] = str(self.function)
 
     def del_vertex(self, value):
         if not value:
@@ -92,7 +98,8 @@ class Digraph:
         dot.format = 'png'
         for i in errors:
             for j in i:
-                detail = j + os.linesep + 'path:' + str(self.graph_record[j]['path']) + os.linesep + 'lineno:' + str(self.graph_record[j]['lineno'])
+                detail = j + os.linesep + 'path:' + str(self.graph_record[j]['path']) + os.linesep + 'function:' + str(self.graph_record[j]['function']) \
+                         + os.linesep + 'lineno:' + str(self.graph_record[j]['lineno'])
                 if j == i[0] or j == i[-1]:
                     dot.node(j, detail, color='red')
                 else:
