@@ -6,7 +6,12 @@ import codecs
 
 from src.utils import Utils
 from src.digraph import Digraph
+from src.common import SPECIAL_FUNC
 from src.common import BUILD_IN_FUNC, BUILD_IN_STR_METHOD, BUILD_IN_DICT_METHOD, BUILD_IN_PASS_METHOD, BUILD_IN_MODEL_FUNC, BUILD_IN_FILE_IO
+
+
+SKIP_FUNC = ['<listcomp>']
+
 
 class Process:
     def __init__(self):
@@ -47,6 +52,8 @@ class Process:
                 body_insts = []
                 body_co_consts = sub_codeobj.co_consts
                 func_or_class_name = sub_codeobj.co_name
+                if func_or_class_name in SKIP_FUNC:
+                    continue
                 co_varnames = sub_codeobj.co_varnames
                 co_argcount = sub_codeobj.co_argcount
                 self.utils.current_func_name = self.get_whole_name(func_or_class_name)
@@ -70,7 +77,7 @@ class Process:
                 if inst.starts_line:
                     self.utils.current_lineno = inst.starts_line
                     self.digraph.lineno = inst.starts_line
-                    if self.utils.current_lineno == 1317:
+                    if self.utils.current_lineno == 466:
                         print()
 
                 self.utils.push(inst)
@@ -166,7 +173,6 @@ class Process:
             for i in value_rhs:
                 self.digraph.add_edge(i, value_lhs)
 
-
     def process_store_attr(self, inst):
         pass
 
@@ -237,6 +243,9 @@ class Process:
 
     def process_call(self, inst):
         """
+        处理函数调用
+        :param inst: 函数调用指令
+        :return:
         """
         if 'CALL_' not in inst.opname:
             return
@@ -265,6 +274,11 @@ class Process:
                     elif inst_global.opname == 'LOAD_NAME':
                         value_name = self.process_load_name(inst_global.argval)
                         func_name = value_name + '.' + attr_name
+                elif inst_func_name.opname == 'MAKE_FUNCTION':
+                    func_name = 'MAKE_FUNCTION'
+                    # 固定出栈
+                    self.utils.pop()
+                    self.utils.pop()
 
             elif 'CALL_METHOD' in inst.opname:
                 inst_method_name = self.utils.pop()
@@ -320,7 +334,7 @@ class Process:
 
             if not func_name:
                 return
-            if func_name in BUILD_IN_FUNC or func_name in BUILD_IN_MODEL_FUNC:
+            if func_name in BUILD_IN_FUNC or func_name in BUILD_IN_MODEL_FUNC or func_name in SPECIAL_FUNC:
                 func_name = self.utils.current_func_name + '.' + func_name
                 self.digraph.add_edge(func_name + '#0', func_name + '#-1')
 
@@ -439,5 +453,7 @@ class Process:
             if self.utils.rot_value:
                 value_rhs = self.utils.rot_value.pop()
             self.utils.push(inst_rhs)
+        elif 'GET_ITER' in inst_rhs.opname:
+            value_rhs = self.process_rhs()
         return value_rhs
 

@@ -50,3 +50,5 @@ BUILD_IN_MODEL_FUNC = ['os.path.abspath', 'os.path.basename', 'os.path.commonpat
                        'os.path.relpath', 'os.path.samefile', 'os.stat', 'os.path.sameopenfile', 'os.path.samestat', 'os.path.split',
                        'os.path.splitdrive', 'os.path.splitext', 'os.path.supports_unicode_filenames']
 
+SPECIAL_FUNC = ['MAKE_FUNCTION']
+
