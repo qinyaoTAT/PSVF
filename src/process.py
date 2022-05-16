@@ -6,11 +6,8 @@ import codecs
 
 from src.utils import Utils
 from src.digraph import Digraph
-from src.common import SPECIAL_FUNC
+from src.common import SPECIAL_FUNC, SKIP_FUNC
 from src.common import BUILD_IN_FUNC, BUILD_IN_STR_METHOD, BUILD_IN_DICT_METHOD, BUILD_IN_PASS_METHOD, BUILD_IN_MODEL_FUNC, BUILD_IN_FILE_IO
-
-
-SKIP_FUNC = ['<listcomp>']
 
 
 class Process:

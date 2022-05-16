@@ -52,3 +52,5 @@ BUILD_IN_MODEL_FUNC = ['os.path.abspath', 'os.path.basename', 'os.path.commonpat
 
 SPECIAL_FUNC = ['MAKE_FUNCTION']
 
+SKIP_FUNC = ['<listcomp>', '<genexpr>']
+
