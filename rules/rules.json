@@ -7,8 +7,7 @@
         "os.environ",
         "input#-1",
         "raw_input#-1",
-        "xml.dom.minidom.parse#-1",
-        "xml.sax.make_parser.parse#-1"
+        "jinja2.FileSystemLoader#-1"
       ],
       "name": "Untrusted input"
     },
@@ -18,39 +17,40 @@
   "sink": {
     "p2000": {
       "function": [
-        "os.execl",
-        "os.execle",
-        "os.execlp",
-        "os.execlpe",
-        "os.execv",
-        "os.execve",
-        "os.execvp",
-        "os.execvpe",
-        "os.spawnl",
-        "os.spawnle",
-        "os.spawnlp",
-        "os.spawnlpe",
-        "os.spawnv",
-        "os.spawnve",
-        "os.spawnvp",
-        "os.spawnvpe",
-        "os.startfile",
+        "os.execl#0",
+        "os.execle#0",
+        "os.execlp#0",
+        "os.execlpe#0",
+        "os.execv#0",
+        "os.execve#0",
+        "os.execvp#0",
+        "os.execvpe#0",
+        "os.spawnl#0",
+        "os.spawnle#0",
+        "os.spawnlp#0",
+        "os.spawnlpe#0",
+        "os.spawnv#0",
+        "os.spawnve#0",
+        "os.spawnvp#0",
+        "os.spawnvpe#0",
+        "os.startfile#0",
         "os.system#0",
-        "os.popen",
-        "os.popen2",
-        "os.popen3",
-        "os.popen4",
-        "popen2.popen2",
-        "popen2.popen3",
-        "popen2.popen4",
-        "popen2.Popen3",
-        "popen2.Popen4",
+        "os.popen#0",
+        "os.popen2#0",
+        "os.popen3#0",
+        "os.popen4#0",
+        "popen2.popen2#0",
+        "popen2.popen3#0",
+        "popen2.popen4#0",
+        "popen2.Popen3#0",
+        "popen2.Popen4#0",
         "commands.getoutput#0",
         "commands.getstatusoutput#0",
         "subprocess.Popen#0",
         "subprocess.call#0",
         "subprocess.check_call#0",
-        "subprocess.check_output#0"
+        "subprocess.check_output#0",
+        "paramiko.exec_command"
       ],
       "name": "command injection",
       "level": 3,
@@ -70,6 +70,33 @@
         "write#0"
       ],
       "name": "file injection",
+      "level": 3,
+      "cwe": ""
+    },
+    "p2003": {
+      "function": [
+        "extra#0",
+        "RawSQL#0",
+        "execute#0",
+        "executemany#0"
+      ],
+      "name": "SQL injection",
+      "level": 3,
+      "cwe": ""
+    },
+    "p2004": {
+      "function": [
+        "django.utils.safestring.mark_safe#0",
+        "django.utils.safestring.SafeText#0",
+        "django.utils.safestring.SafeUnicode#0",
+        "django.utils.safestring.SafeString#0",
+        "django.utils.safestring.SafeBytes#0",
+        "jinja2.Environment#0",
+        "yaml.load#0",
+        "xml.dom.minidom.parse#0",
+        "xml.sax.make_parser.parse#0"
+      ],
+      "name": "xss injection",
       "level": 3,
       "cwe": ""
     }
