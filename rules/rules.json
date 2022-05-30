@@ -7,7 +7,8 @@
         "os.environ",
         "input#-1",
         "raw_input#-1",
-        "jinja2.FileSystemLoader#-1"
+        "jinja2.FileSystemLoader#-1",
+        "request.POST.get#-1"
       ],
       "name": "Untrusted input"
     },
@@ -59,7 +60,8 @@
     "p2001": {
       "function": [
         "exec#0",
-        "eval#0"
+        "eval#0",
+        "write#0"
       ],
       "name": "code injection",
       "level": 3,
@@ -67,9 +69,9 @@
     },
     "p2002": {
       "function": [
-        "write#0"
+        "request.POST#1"
       ],
-      "name": "file injection",
+      "name": "request injection",
       "level": 3,
       "cwe": ""
     },
