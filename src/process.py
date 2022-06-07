@@ -74,7 +74,7 @@ class Process:
                 if inst.starts_line:
                     self.utils.current_lineno = inst.starts_line
                     self.digraph.lineno = inst.starts_line
-                    if self.utils.current_lineno == 466:
+                    if self.utils.current_lineno == 31:
                         print()
 
                 self.utils.push(inst)
@@ -89,7 +89,7 @@ class Process:
                 self.process_compare_op(inst)
 
             except Exception as exception:
-                logging.warning(inst.opname + ' : ' + str(self.utils.current_lineno) + ':' + str(exception))
+                logging.warning(inst.opname + ' : ' + str(self.utils.current_lineno) + ' : ' + str(exception))
 
     def process_rot(self, inst):
         if 'ROT_' not in inst.opname:
@@ -122,7 +122,7 @@ class Process:
             return
         inst_store = self.utils.pop()
         value_lhs = inst_store.argval
-        value_lhs = self.get_whole_name(value_lhs)
+        # value_lhs = self.get_whole_name(value_lhs)
         value_rhs = self.process_rhs(value_lhs=value_lhs)
         if not value_rhs:
             return
@@ -271,6 +271,8 @@ class Process:
                     elif inst_global.opname == 'LOAD_NAME':
                         value_name = self.process_load_name(inst_global.argval)
                         func_name = value_name + '.' + attr_name
+                elif inst_func_name.opname == 'LOAD_NAME':
+                    func_name = self.process_load_name(inst_func_name.argval)
                 elif inst_func_name.opname == 'MAKE_FUNCTION':
                     func_name = 'MAKE_FUNCTION'
                     # 固定出栈
