@@ -39,4 +39,8 @@ optional arguments:
 ```
 Run the example: 
 
-`python3 psvf.py -s example\test1 -f json`
+`python3 psvf.py -s example/test1 -f json`
+
+View result:
+
+`output/test1_errors.gv.png`
