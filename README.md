@@ -17,7 +17,7 @@ Example errors graph: source/sink points are marked in red.
 
 ## Usage
 
-`python3 psvf.py -s xxx/xxx -f json`
+`python3 psvf.py -h`
 
 ```buildoutcfg
 usage: psvf.py [-h] [-s SCAN_PATH] [-o OUTPUT] [-f FORMAT] [-g] [-v VERSION]
@@ -37,3 +37,6 @@ optional arguments:
                         show version.
 
 ```
+Run the example: 
+
+`python3 psvf.py -s example\test1 -f json`
