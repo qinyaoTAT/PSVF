@@ -51,11 +51,12 @@
         "subprocess.call#0",
         "subprocess.check_call#0",
         "subprocess.check_output#0",
-        "paramiko.exec_command"
+        "paramiko.exec_command#0"
       ],
       "name": "command injection",
       "level": 3,
-      "cwe": ""
+      "cwe": "",
+      "msg": "Untrusted input passed to this function can cause command injection problems"
     },
     "p2001": {
       "function": [
@@ -65,7 +66,8 @@
       ],
       "name": "code injection",
       "level": 3,
-      "cwe": ""
+      "cwe": "",
+      "msg": ""
     },
     "p2002": {
       "function": [
@@ -73,7 +75,8 @@
       ],
       "name": "request injection",
       "level": 3,
-      "cwe": ""
+      "cwe": "",
+      "msg": ""
     },
     "p2003": {
       "function": [
@@ -84,7 +87,8 @@
       ],
       "name": "SQL injection",
       "level": 3,
-      "cwe": ""
+      "cwe": "",
+      "msg": ""
     },
     "p2004": {
       "function": [
@@ -100,7 +104,8 @@
       ],
       "name": "xss injection",
       "level": 3,
-      "cwe": ""
+      "cwe": "",
+      "msg": ""
     }
   },
   "transfer": {
