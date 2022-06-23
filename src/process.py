@@ -21,8 +21,8 @@ class Process:
         return name
 
     def process_load_name(self, value):
-        if value in self.utils.current_import_module:
-            return self.utils.current_import_module[value]
+        if value in self.utils.current_whole_name:
+            return self.utils.current_whole_name[value]
         elif value in self.utils.project_module_set:
             return self.utils.current_func_name + '.' + value
         else:
@@ -37,7 +37,7 @@ class Process:
             for inst in code_obj:
                 top_level_insts.append(inst)
             co_consts = code_obj.codeobj.co_consts
-        self.utils.current_import_module = dict()
+        self.utils.current_whole_name = dict()
         self.digraph.function = ''
         self.process_insts(top_level_insts)
         self.utils.clean()
@@ -74,7 +74,7 @@ class Process:
                 if inst.starts_line:
                     self.utils.current_lineno = inst.starts_line
                     self.digraph.lineno = inst.starts_line
-                    if self.utils.current_lineno == 31:
+                    if self.utils.current_lineno == 76:
                         print()
 
                 self.utils.push(inst)
@@ -122,8 +122,8 @@ class Process:
             return
         inst_store = self.utils.pop()
         value_lhs = inst_store.argval
-        # value_lhs = self.get_whole_name(value_lhs)
-        value_rhs = self.process_rhs(value_lhs=value_lhs)
+        value_lhs = self.get_whole_name(value_lhs)
+        value_rhs = self.process_rhs()
         if not value_rhs:
             return
         elif value_rhs == 'MAKE_FUNCTION':
@@ -133,6 +133,7 @@ class Process:
         elif isinstance(value_rhs, set):
             for i in value_rhs:
                 self.digraph.add_edge(i, value_lhs)
+        self.utils.current_whole_name[value_lhs] = value_rhs
 
     def process_store_fast(self, inst):
         if 'STORE_FAST' != inst.opname:
@@ -189,7 +190,7 @@ class Process:
                 self.utils.push(last_inst)
                 self.utils.called_name.append(last_call_name)
 
-    def process_import(self, inst, value_lhs):
+    def process_import(self, inst):
         if 'IMPORT_' not in inst.opname:
             return
         import_name = ''
@@ -200,7 +201,7 @@ class Process:
             inst_name = self.utils.pop()
             if 'IMPORT_NAME' == inst_name.opname:
                 import_name = inst_name.argval + '.' + import_name
-        self.utils.current_import_module[value_lhs] = import_name
+        return import_name
 
     def process_binary(self, inst):
         if 'BINARY_' not in inst.opname:
@@ -399,7 +400,7 @@ class Process:
                 value_arg = self.utils.current_func_name + '.' + value
             self.digraph.add_edge(self.utils.current_func_name + '#' + str(index), value_arg)
 
-    def process_rhs(self, value_lhs=''):
+    def process_rhs(self):
         inst_rhs = self.utils.pop()
         value_rhs = ''
         if inst_rhs is None:
@@ -412,6 +413,8 @@ class Process:
             value_rhs = inst_rhs.argval
             if self.utils.current_func_name:
                 value_rhs = self.utils.current_func_name + '.' + value_rhs
+        elif 'LOAD_GLOBAL' in inst_rhs.opname:
+            value_rhs = self.get_whole_name(inst_rhs.argval)
         elif 'LOAD_ATTR' in inst_rhs.opname:
             attr_value = inst_rhs.argval
             inst_global = self.utils.pop()
@@ -427,8 +430,7 @@ class Process:
             else:
                 value_rhs = attr_value
         elif 'IMPORT_' in inst_rhs.opname:
-            self.process_import(inst_rhs, value_lhs)
-            return
+            value_rhs = self.process_import(inst_rhs)
         elif 'BUILD_' in inst_rhs.opname:
             if 'BUILD_SLICE' in inst_rhs.opname:
                 return ''

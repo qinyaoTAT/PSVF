@@ -15,7 +15,7 @@ class Utils:
         self.current_lineno = 0
         self.build_elem_set = set()
         self.binary_operand_set = set()
-        self.current_import_module = dict()
+        self.current_whole_name = dict()
 
     def push(self, inst):
         '''
